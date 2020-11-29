@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+.head {
+    display: flex;
+}
+
+.left {
+    display: flex;
+}
+
+.right {
+    display: flex;
+}
+
+.player {
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 70px;
+    width: 70px;
+    background: red;
+    color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    transition: left .15s, top .15s;
+    z-index: -10;
+    background-size: cover;
+
+}
+
+.playerNone {
+    display: none;
+}
+
+.startButton {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: #275961;
+    color: white;
+    height: 30px;
+    width: 200px;
+    font-weight: 600;
+}
+
+.stopButton {
+    margin: 20px;
+    display: none;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: #f5c50a;
+    color: black;
+    height: 30px;
+    width: 200px;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.settingsButton {
+    margin: 20px;
+    margin-left: 10px;
+    display: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: #32588c;
+    color: white;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.popupSettings {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 2;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+.close {
+    cursor: pointer;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.settings-header {
+    padding: 2px 16px;
+    background-color: #275961;
+    color: white;
+}
+
+.settings-body {
+    padding: 2px 16px;
+    display: flex;
+}
+
+.settings-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    padding-bottom: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+input {
+    cursor: pointer;
+}
+
+.eee {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    margin-top: -12px;
+    content: ' ';
+    width: 0px;
+    height: 0px;
+
+}
+
+.setImages {
+    display: flex;
+    flex-direction: column;
+}
+
+.customImage {
+    cursor: pointer;
+}
+
+.setControl,
+.setColor,
+.setForm,
+.setImage {
+    margin: 10px;
+}

@@ -1,0 +1,86 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>game</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class='popupSettings'>
+  <div class="settings-content">
+  <div class="settings-header">
+    <span class="close">&times;</span>
+    <h2>Настройки</h2>
+  </div>
+  <div class="settings-body">
+   <!--        управление -->
+    <div class='setControl'>
+      <p>Управление:</p>
+    <div>
+      <input type="radio" class="mouseCheck" name="control" checked>
+      <label for="scales">Мышь</label>
+    </div>
+    <div>
+      <input type="radio" class="keyboardCheck" name="control">
+      <label for="scales">Клавиатура</label>
+    </div>
+   </div>
+<!--      форма-->
+    <div class='setForm'>
+      <p>Форма:</p>
+      <div>
+        <input type="radio" class="squareCheck" name="form" checked>
+        <label for="scales">Квадрат</label>
+      </div>
+      <div>
+        <input type="radio" class="circleCheck" name="form" >
+        <label for="scales">Круг</label>
+      </div>
+    </div>
+    
+<!--  цвет   -->
+    <div class='setColor'>
+      <p>Цвет:</p>
+      <div>
+        <input type="radio" class="redCheck" name="color" checked>
+        <label for="scales">Красный</label>
+      </div>
+      <div>
+        <input type="radio" class="blueCheck" name="color" >
+        <label for="scales">Синий</label>
+      </div>
+      <div>
+        <input type="radio" class="yellowCheck" name="color" >
+        <label for="scales">Желтый</label>
+      </div>
+    </div>
+    
+<!-- Свое изображение -->
+    <div class='setImage'>
+    <p> Свое изображение:</p>
+    <input type="file" class='customImage'>
+      <button class='buttonSetCustomImage'>Установить</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class='head'>
+  <div class='left'>
+    <button class='startButton'>Старт!</button>
+    <button class='stopButton'>Стоп!</button>
+  </div>
+  <div class='right'>
+    <button class='settingsButton'>Настройки</button>
+  </div>
+  <button class='stopButton'>Стоп!</button>
+</div>
+<div class='player' id='playerId'>player</div>
+<div class='playerNone'></div>
+<div class='area'></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
