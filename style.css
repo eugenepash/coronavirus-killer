@@ -2,6 +2,10 @@
     margin: 0;
 }
 
+canvas {
+    border: 1px solid red;
+}
+
 button {
     cursor: pointer;
 }
@@ -185,4 +189,15 @@ input {
 .setForm,
 .setImage {
     margin: 10px;
+}
+.preview{
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    border: 2px solid black;
+}
+#upload-img{
+    height: 100px;
+    width: 100px;
+    background-size: cover;
 }

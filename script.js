@@ -13,16 +13,10 @@ const circleCheck = document.querySelector('.circleCheck');
 const redCheck = document.querySelector('.redCheck');
 const blueCheck = document.querySelector('.blueCheck');
 const yellowCheck = document.querySelector('.yellowCheck');
-// custom Images
-const customImage = document.querySelector('.customImage');
-const buttonSetCustomImage = document.querySelector('.buttonSetCustomImage');
 
 // check controls
 const mouseCheck = document.querySelector('.mouseCheck');
 const keyboardCheck = document.querySelector('.keyboardCheck');
-
-
-
 
 
 startButton.onclick = function () {
@@ -73,137 +67,66 @@ circleCheck.onclick = function () {
     player.className = 'player';
     player.style.borderRadius = '70px';
 }
-
-
 // custom Images
-buttonSetCustomImage.onclick = function () {
-    player.style.backgroundImage = customImage;
+const buttonSetCustomImage = document.querySelector('.buttonSetCustomImage');
+const customImage = document.querySelector('customImage');
+const preview = document.querySelector('#upload-img');
+
+buttonSetCustomImage.onclick = function(){
+   
 }
-
-
-
-
-
-
-
-
 
 // keyboard
-
-
-
-
 keyboardCheck.onclick = function () {
     document.body.removeEventListener("mousemove", getClickPosition, false);
-
+    document.addEventListener('keydown', keyPress);
 }
 
+function place(id, x_pos, y_pos) {
+    var element = document.getElementById(id);
+    element.style.position = "absolute";
+    element.style.left = x_pos + 'px';
+    element.style.top = y_pos + 'px';
+}
 
-//document.onkeydown = function (event) {
-//    if (event.key == "ArrowRight") {
-//        player.style.left = left1 + 'px';
-//        left1++;
-//        console.log('right');
-//    }
-//    if (event.key == "ArrowDown") {
-//        player.style.top = top1 + 'px';
-//        top1++;
-//        console.log('down');
-//    }
-//    if (event.key == "ArrowLeft") {
-//        player.style.right = right1 + 'px';
-//        right1++;
-//        console.log('left');
-//    }
-//    if (event.key == "ArrowUp") {
-//        player.style.bottom = bottom1 + 'px';
-//        bottom1++;
-//        console.log('up');
-//    }
-//}
+function update() {
+    document.removeEventListener('keydown', keyPress);
+}
 
-var left1 = 0;
-var top1 = 0;
-var right1 = 0;
-var bottom1 = 0;
-
-document.onkeydown = function (e) {
-    switch (e.keyCode) {
+function keyPress(e) {
+    var x = e.keyCode;
+    var move = document.getElementById("move").getBoundingClientRect();
+    var left = parseInt(move.left, 10);
+    var top = parseInt(move.top, 10)
+    switch (x) {
         case 37:
-            alert('left');
+            place('move', left - 30, top);
             break;
-        case 38:
-            alert('up');
-            break;
+
         case 39:
-            alert('right');
+            place('move', left + 30, top);
             break;
+
+        case 38:
+            place('move', left, top - 30);
+            break;
+
         case 40:
-            alert('down');
+            place('move', left, top + 30);
             break;
     }
-};
-var mouseX = 0;
-var mouseY = 0;
+    // console.log(x);
 
-document.body.addEventListener("mousemove", getClickPosition, false);
-
-function getClickPosition(e) {
-    var player = document.querySelector(".player");
-    var parentPosition = getPosition(e.currentTarget);
-    var xPosition = e.clientX - parentPosition.x - (player.clientWidth / 1000);
-    var yPosition = e.clientY - parentPosition.y - (player.clientHeight / 1000);
-    player.style.left = xPosition + "px";
-    player.style.top = yPosition + "px";
 }
-
-function getPosition(element) {
-    var xPos = 0.10;
-    var yPos = 0.10;
-    while (element) {
-        if (element.tagName == "BODY") {
-            var xScroll = element.scrollLeft || document.documentElement.scrollLeft;
-            var yScroll = element.scrollTop || document.documentElement.scrollTop;
-            xPos += (element.offsetLeft - xScroll + element.clientLeft);
-            yPos += (element.offsetTop - yScroll + element.clientTop);
-        } else {
-            xPos += (element.offsetLeft - element.scrollLeft + element.clientLeft);
-            yPos += (element.offsetTop - element.scrollTop + element.clientTop);
-        }
-        element = element.offsetParent;
-    }
-    return {
-        x: xPos,
-        y: yPos
-    };
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+update();
 
 // Mouse
 mouseCheck.onclick = function () {
     document.body.addEventListener("mousemove", getClickPosition, false);
+    document.removeEventListener('keydown', keyPress);
 }
-
 var mouseX = 0;
 var mouseY = 0;
-
 document.body.addEventListener("mousemove", getClickPosition, false);
 
 function getClickPosition(e) {
