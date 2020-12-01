@@ -13,6 +13,8 @@ const circleCheck = document.querySelector('.circleCheck');
 const redCheck = document.querySelector('.redCheck');
 const blueCheck = document.querySelector('.blueCheck');
 const yellowCheck = document.querySelector('.yellowCheck');
+const customColorCheck = document.querySelector('.customColorCheck');
+const colorPicker = document.querySelectorAll(".colorPicker");
 
 // check controls
 const mouseCheck = document.querySelector('.mouseCheck');
@@ -56,6 +58,9 @@ yellowCheck.onclick = function () {
     player.style.background = 'yellow';
     player.style.color = 'black';
 }
+//customColorCheck.onclick = function{
+//    
+//}
 
 // form check
 squareCheck.onclick = function () {

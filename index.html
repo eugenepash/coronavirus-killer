@@ -5,6 +5,8 @@
     <title>game</title>
     <link href="style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="farbtastic.css" type="text/css" />
+    <script type="text/javascript" src="farbtastic.js"></script>
 </head>
 
 <body>
@@ -55,6 +57,14 @@
                         <input type="radio" class="yellowCheck" name="color">
                         <label for="scales">Желтый</label>
                     </div>
+                    <div class='customColor'>
+                        <input type="radio" class="customColorCheck" name="color">
+                        <label for="scales">Свой цвет</label>
+                        <div class="colorPicker">
+                            <form><input type="text" id="color" name="color" value="#123456" /></form>
+                            <div id="colorpicker"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Свое изображение -->
@@ -63,7 +73,7 @@
                     <div class="preview">
                         <img src="#" id="upload-img" alt="image" />
                     </div>
-                    
+
                     <button class='buttonSetCustomImage'>Установить</button>
 
 
@@ -98,6 +108,13 @@
             }
         }
         $("#upload").change(readURL);
+
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#colorpicker').farbtastic('#color');
+        });
 
     </script>
 </body>
