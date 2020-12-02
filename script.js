@@ -14,7 +14,7 @@ const redCheck = document.querySelector('.redCheck');
 const blueCheck = document.querySelector('.blueCheck');
 const yellowCheck = document.querySelector('.yellowCheck');
 const customColorCheck = document.querySelector('.customColorCheck');
-const colorPicker = document.querySelectorAll(".colorPicker");
+const colorPicker = document.querySelector(".colorPicker");
 
 // check controls
 const mouseCheck = document.querySelector('.mouseCheck');
@@ -46,21 +46,28 @@ window.onclick = function (event) {
 
 //  color check
 
+
+
 redCheck.onclick = function () {
     player.style.background = 'red';
     player.style.color = 'white';
+    colorPicker.style.display = 'none';
 }
 blueCheck.onclick = function () {
     player.style.background = 'blue';
     player.style.color = 'white';
+    colorPicker.style.display = 'none';
 }
 yellowCheck.onclick = function () {
     player.style.background = 'yellow';
     player.style.color = 'black';
+    colorPicker.style.display = 'none';
 }
-//customColorCheck.onclick = function{
-//    
-//}
+customColorCheck.onclick = function(){
+    colorPicker.style.display = 'block';
+
+}
+
 
 // form check
 squareCheck.onclick = function () {
@@ -75,11 +82,13 @@ circleCheck.onclick = function () {
 // custom Images
 const buttonSetCustomImage = document.querySelector('.buttonSetCustomImage');
 const customImage = document.querySelector('customImage');
-const preview = document.querySelector('#upload-img');
+const preview = document.querySelector('.preview');
+const uploadImg = document.querySelector('.uploadImg');
 
 buttonSetCustomImage.onclick = function(){
-   
+    player.classList.remove = ('player');
 }
+
 
 // keyboard
 keyboardCheck.onclick = function () {

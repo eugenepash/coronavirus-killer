@@ -36,6 +36,7 @@ button {
     transition: left .15s, top .15s;
     z-index: -10;
     background-size: cover;
+    background-image: ;
 
 }
 
@@ -200,4 +201,10 @@ input {
     height: 100px;
     width: 100px;
     background-size: cover;
+}
+.colorPicker{
+    display: none;
+}
+.customColor{
+    width: 200px;
 }

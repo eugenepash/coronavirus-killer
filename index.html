@@ -5,8 +5,7 @@
     <title>game</title>
     <link href="style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="farbtastic.css" type="text/css" />
-    <script type="text/javascript" src="farbtastic.js"></script>
+
 </head>
 
 <body>
@@ -57,26 +56,28 @@
                         <input type="radio" class="yellowCheck" name="color">
                         <label for="scales">Желтый</label>
                     </div>
+
                     <div class='customColor'>
                         <input type="radio" class="customColorCheck" name="color">
                         <label for="scales">Свой цвет</label>
-                        <div class="colorPicker">
-                            <form><input type="text" id="color" name="color" value="#123456" /></form>
-                            <div id="colorpicker"></div>
+                        <div class='colorPicker'>
+                            <div> 
+                               <p>Цвет игрока:</p>
+                                <input data-jscolor="{value:'rgba(255,0,0,1)'}" , onInput="update(this.jscolor)">
+                                <p>Цвет текста:</p>
+                                <input data-jscolor="{value:'rgba(255,255,255,1)'}" , onInput="updateText(this.jscolor)">
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Свое изображение -->
                 <div class='setImage'>
-                    <input type='file' id="upload" />
+                    <input type='file' id="upload" class='uploadImg' />
                     <div class="preview">
-                        <img src="#" id="upload-img" alt="image" />
+                        <img src="" id="upload-img" />
                     </div>
-
                     <button class='buttonSetCustomImage'>Установить</button>
-
-
                 </div>
             </div>
         </div>
@@ -92,7 +93,7 @@
         </div>
         <button class='stopButton'>Стоп!</button>
     </div>
-    <div class='player' id='move'>player</div>
+    <div class='player' id="move">player</div>
     <div class='playerNone'></div>
     <div class='area'></div>
 
@@ -108,13 +109,18 @@
             }
         }
         $("#upload").change(readURL);
-
+        
     </script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#colorpicker').farbtastic('#color');
-        });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.0/jscolor.min.js"></script>
+    <script>
+        function update(picker) {
+            document.querySelector('.player').style.backgroundColor = picker.toRGBAString()
+        }
+        function updateText(picker) {
+            document.querySelector('.player').style.color = picker.toRGBAString()
+        }
+        jscolor.trigger('onInput');
 
     </script>
 </body>
