@@ -49,21 +49,21 @@ window.onclick = function (event) {
 
 
 redCheck.onclick = function () {
-    player.style.background = 'red';
+    player.style.background = '#B43428';
     player.style.color = 'white';
     colorPicker.style.display = 'none';
 }
 blueCheck.onclick = function () {
-    player.style.background = 'blue';
+    player.style.background = '#2D78EB';
     player.style.color = 'white';
     colorPicker.style.display = 'none';
 }
 yellowCheck.onclick = function () {
-    player.style.background = 'yellow';
+    player.style.background = '#F5CF2F';
     player.style.color = 'black';
     colorPicker.style.display = 'none';
 }
-customColorCheck.onclick = function(){
+customColorCheck.onclick = function () {
     colorPicker.style.display = 'block';
 
 }
@@ -85,11 +85,11 @@ const customImage = document.querySelector('customImage');
 const preview = document.querySelector('.preview');
 const uploadImg = document.querySelector('.uploadImg');
 
-buttonSetCustomImage.onclick = function(){
-    player.classList.remove = ('player');
+function showFile(input) {
+    let file = input.files[0];
+    alert(`File name: ${file.name}`); // например, my.png
+    alert(`Last modified: ${file.lastModified}`); // например, 1552830408824
 }
-
-
 // keyboard
 keyboardCheck.onclick = function () {
     document.body.removeEventListener("mousemove", getClickPosition, false);
@@ -114,19 +114,19 @@ function keyPress(e) {
     var top = parseInt(move.top, 10)
     switch (x) {
         case 37:
-            place('move', left - 30, top);
+            place('move', left - 50, top);
             break;
 
         case 39:
-            place('move', left + 30, top);
+            place('move', left + 50, top);
             break;
 
         case 38:
-            place('move', left, top - 30);
+            place('move', left, top - 50);
             break;
 
         case 40:
-            place('move', left, top + 30);
+            place('move', left, top + 50);
             break;
     }
     // console.log(x);

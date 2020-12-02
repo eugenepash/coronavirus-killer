@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <title>game</title>
     <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 
 </head>
@@ -18,7 +20,7 @@
             <div class="settings-body">
                 <!--        управление -->
                 <div class='setControl'>
-                    <p>Управление:</p>
+                    <p style="font-weight: 600; padding-bottom: 10px;">Управление:</p>
                     <div>
                         <input type="radio" class="mouseCheck" name="control" checked>
                         <label for="scales">Мышь</label>
@@ -30,20 +32,21 @@
                 </div>
                 <!--      форма-->
                 <div class='setForm'>
-                    <p>Форма:</p>
+                    <p style="font-weight: 600; padding-bottom: 10px;">Форма:</p>
+
                     <div>
-                        <input type="radio" class="squareCheck" name="form" checked>
-                        <label for="scales">Квадрат</label>
+                        <input type="radio" class="circleCheck" name="form" checked>
+                        <label for="scales">Круг</label>
                     </div>
                     <div>
-                        <input type="radio" class="circleCheck" name="form">
-                        <label for="scales">Круг</label>
+                        <input type="radio" class="squareCheck" name="form">
+                        <label for="scales">Квадрат</label>
                     </div>
                 </div>
 
                 <!--  цвет   -->
                 <div class='setColor'>
-                    <p>Цвет:</p>
+                    <p style="font-weight: 600; padding-bottom: 10px;">Цвет:</p>
                     <div>
                         <input type="radio" class="redCheck" name="color" checked>
                         <label for="scales">Красный</label>
@@ -61,10 +64,10 @@
                         <input type="radio" class="customColorCheck" name="color">
                         <label for="scales">Свой цвет</label>
                         <div class='colorPicker'>
-                            <div> 
-                               <p>Цвет игрока:</p>
-                                <input data-jscolor="{value:'rgba(255,0,0,1)'}" , onInput="update(this.jscolor)">
-                                <p>Цвет текста:</p>
+                            <div>
+                                <p style="font-weight: 600;">Цвет игрока:</p>
+                                <input data-jscolor="{value:'rgba(45,144,207,0.41)'}" , onInput="update(this.jscolor)">
+                                <p style="font-weight: 600; ">Цвет текста:</p>
                                 <input data-jscolor="{value:'rgba(255,255,255,1)'}" , onInput="updateText(this.jscolor)">
                             </div>
                         </div>
@@ -73,11 +76,13 @@
 
                 <!-- Свое изображение -->
                 <div class='setImage'>
-                    <input type='file' id="upload" class='uploadImg' />
+                    <input type='file' id="upload" onchange="showFile(this)"/>
                     <div class="preview">
-                        <img src="" id="upload-img" />
+                        <img src="" id="upload-img" class='uploadImg' />
                     </div>
-                    <button class='buttonSetCustomImage'>Установить</button>
+                    <button class='buttonSetCustomImage' onchange="set(this)">
+                        <p style="font-weight: 600;">Установить</p>
+                    </button>
                 </div>
             </div>
         </div>
@@ -109,7 +114,7 @@
             }
         }
         $("#upload").change(readURL);
-        
+
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.0/jscolor.min.js"></script>
@@ -117,6 +122,7 @@
         function update(picker) {
             document.querySelector('.player').style.backgroundColor = picker.toRGBAString()
         }
+
         function updateText(picker) {
             document.querySelector('.player').style.color = picker.toRGBAString()
         }

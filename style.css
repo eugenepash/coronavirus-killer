@@ -1,5 +1,11 @@
 * {
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+    margin: 0 auto;
+    background-image: url(images/bg.jpg);
+    background-size: cover;
 }
 
 canvas {
@@ -24,16 +30,16 @@ button {
 
 .player {
     border: 2px solid black;
-    border-radius: 10px;
+    border-radius: 70px;
     height: 70px;
     width: 70px;
-    background: red;
+    background: #B43428;
     color: white;
     display: none;
     justify-content: center;
     align-items: center;
     position: absolute;
-    transition: left .15s, top .15s;
+    transition: all 0.3s linear;
     z-index: -10;
     background-size: cover;
     background-image: ;
@@ -91,23 +97,15 @@ button {
 
 .popupSettings {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 2;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
 
 .close {
@@ -126,7 +124,7 @@ button {
 }
 
 .settings-header {
-    padding: 2px 16px;
+    padding: 20px 16px;
     background-color: #275961;
     color: white;
 }
@@ -176,9 +174,11 @@ input {
 
 }
 
-.setImages {
+.setImage {
     display: flex;
+    justify-content: center;
     flex-direction: column;
+    
 }
 
 .customImage {
