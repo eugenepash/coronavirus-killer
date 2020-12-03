@@ -1,4 +1,3 @@
-<html>
 
 <head>
     <meta charset="utf-8" />
@@ -22,12 +21,14 @@
                 <div class='setControl'>
                     <p style="font-weight: 600; padding-bottom: 10px;">Управление:</p>
                     <div>
-                        <input type="radio" class="mouseCheck" name="control" checked>
-                        <label for="scales">Мышь</label>
+                        <label>
+                            <input type="radio" class="mouseCheck" name="control" checked> Мышь
+                        </label>
                     </div>
                     <div>
-                        <input type="radio" class="keyboardCheck" name="control">
-                        <label for="scales">Клавиатура</label>
+                        <label>
+                            <input type="radio" class="keyboardCheck" name="control"> Клавиатура
+                        </label>
                     </div>
                 </div>
                 <!--      форма-->
@@ -35,12 +36,14 @@
                     <p style="font-weight: 600; padding-bottom: 10px;">Форма:</p>
 
                     <div>
-                        <input type="radio" class="circleCheck" name="form" checked>
-                        <label for="scales">Круг</label>
+                        <label>
+                            <input type="radio" class="circleCheck" name="form" checked> Круг
+                        </label>
                     </div>
                     <div>
-                        <input type="radio" class="squareCheck" name="form">
-                        <label for="scales">Квадрат</label>
+                        <label>
+                            <input type="radio" class="squareCheck" name="form"> Квадрат
+                        </label>
                     </div>
                 </div>
 
@@ -48,27 +51,35 @@
                 <div class='setColor'>
                     <p style="font-weight: 600; padding-bottom: 10px;">Цвет:</p>
                     <div>
-                        <input type="radio" class="redCheck" name="color" checked>
-                        <label for="scales">Красный</label>
+                        <label>
+                            <input type="radio" class="redCheck" name="color" checked> Красный
+                        </label>
                     </div>
                     <div>
-                        <input type="radio" class="blueCheck" name="color">
-                        <label for="scales">Синий</label>
+                        <label>
+                            <input type="radio" class="blueCheck" name="color"> Синий
+                        </label>
                     </div>
                     <div>
-                        <input type="radio" class="yellowCheck" name="color">
-                        <label for="scales">Желтый</label>
+                        <label>
+                            <input type="radio" class="yellowCheck" name="color"> Желтый
+                        </label>
                     </div>
 
                     <div class='customColor'>
-                        <input type="radio" class="customColorCheck" name="color">
-                        <label for="scales">Свой цвет</label>
+                        <label>
+                            <input type="radio" class="customColorCheck" name="color"> Свой цвет
+                        </label>
                         <div class='colorPicker'>
                             <div>
                                 <p style="font-weight: 600;">Цвет игрока:</p>
-                                <input data-jscolor="{value:'rgba(45,144,207,0.41)'}" , onInput="update(this.jscolor)">
+                                <label>
+                                    <input data-jscolor="{value:'rgba(45,144,207,0.41)'}" , onInput="update(this.jscolor)">
+                                </label>
                                 <p style="font-weight: 600; ">Цвет текста:</p>
-                                <input data-jscolor="{value:'rgba(255,255,255,1)'}" , onInput="updateText(this.jscolor)">
+                                <label>
+                                    <input data-jscolor="{value:'rgba(255,255,255,1)'}" , onInput="updateText(this.jscolor)">
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -78,7 +89,8 @@
                 <div class='setImage'>
                     <input type='file' id="upload" onchange="showFile(this)"/>
                     <div class="preview">
-                        <img src="" id="upload-img" class='uploadImg' />
+                        <img src="" id="upload-img" class='uploadImg'  alt="custom image"/>
+
                     </div>
                     <button class='buttonSetCustomImage' onchange="set(this)">
                         <p style="font-weight: 600;">Установить</p>
@@ -87,7 +99,7 @@
             </div>
         </div>
     </div>
-
+    <div class="area">
     <div class='head'>
         <div class='left'>
             <button class='startButton'>Старт!</button>
@@ -100,7 +112,8 @@
     </div>
     <div class='player' id="move">player</div>
     <div class='playerNone'></div>
-    <div class='area'></div>
+    </div>
+    
 
     <script src="script.js"></script>
     <script>
@@ -131,4 +144,3 @@
     </script>
 </body>
 
-</html>

@@ -1,24 +1,17 @@
-const startButton = document.querySelector('.startButton');
-const stopButton = document.querySelector('.stopButton');
-const player = document.querySelector('.player');
-const playerId = document.querySelector('playerId');
-const playerNone = document.querySelector('.playerNone');
-const settingsButton = document.querySelector('.settingsButton');
-const popupSettings = document.querySelector('.popupSettings');
-const close = document.querySelector('.close');
+let startButton;
+startButton = document.querySelector('.startButton');
 // форма
-const squareCheck = document.querySelector('.squareCheck');
-const circleCheck = document.querySelector('.circleCheck');
 // Color
-const redCheck = document.querySelector('.redCheck');
-const blueCheck = document.querySelector('.blueCheck');
-const yellowCheck = document.querySelector('.yellowCheck');
-const customColorCheck = document.querySelector('.customColorCheck');
-const colorPicker = document.querySelector(".colorPicker");
-
 // check controls
-const mouseCheck = document.querySelector('.mouseCheck');
-const keyboardCheck = document.querySelector('.keyboardCheck');
+const stopButton = document.querySelector('.stopButton'), player = document.querySelector('.player'),
+    settingsButton = document.querySelector('.settingsButton'),
+    popupSettings = document.querySelector('.popupSettings'), close = document.querySelector('.close'),
+    squareCheck = document.querySelector('.squareCheck'), circleCheck = document.querySelector('.circleCheck'),
+    redCheck = document.querySelector('.redCheck'), blueCheck = document.querySelector('.blueCheck'),
+    yellowCheck = document.querySelector('.yellowCheck'),
+    customColorCheck = document.querySelector('.customColorCheck'),
+    colorPicker = document.querySelector(".colorPicker"), mouseCheck = document.querySelector('.mouseCheck'),
+    keyboardCheck = document.querySelector('.keyboardCheck');
 
 
 startButton.onclick = function () {
@@ -39,7 +32,7 @@ close.onclick = function () {
     popupSettings.style.display = 'none';
 }
 window.onclick = function (event) {
-    if (event.target == popupSettings) {
+    if (event.target === popupSettings) {
         popupSettings.style.display = "none";
     }
 }
@@ -85,11 +78,12 @@ const customImage = document.querySelector('customImage');
 const preview = document.querySelector('.preview');
 const uploadImg = document.querySelector('.uploadImg');
 
-function showFile(input) {
-    let file = input.files[0];
-    alert(`File name: ${file.name}`); // например, my.png
-    alert(`Last modified: ${file.lastModified}`); // например, 1552830408824
+
+buttonSetCustomImage.onclick = function (){
+    alert('смена картинки');
 }
+
+
 // keyboard
 keyboardCheck.onclick = function () {
     document.body.removeEventListener("mousemove", getClickPosition, false);
@@ -97,7 +91,7 @@ keyboardCheck.onclick = function () {
 }
 
 function place(id, x_pos, y_pos) {
-    var element = document.getElementById(id);
+    const element = document.getElementById(id);
     element.style.position = "absolute";
     element.style.left = x_pos + 'px';
     element.style.top = y_pos + 'px';
@@ -108,10 +102,10 @@ function update() {
 }
 
 function keyPress(e) {
-    var x = e.keyCode;
-    var move = document.getElementById("move").getBoundingClientRect();
-    var left = parseInt(move.left, 10);
-    var top = parseInt(move.top, 10)
+    const x = e.keyCode;
+    const move = document.getElementById("move").getBoundingClientRect();
+    const left = parseInt(move.left, 10);
+    const top = parseInt(move.top, 10);
     switch (x) {
         case 37:
             place('move', left - 50, top);
@@ -139,15 +133,15 @@ mouseCheck.onclick = function () {
     document.body.addEventListener("mousemove", getClickPosition, false);
     document.removeEventListener('keydown', keyPress);
 }
-var mouseX = 0;
-var mouseY = 0;
+const mouseX = 5;
+const mouseY = 5;
 document.body.addEventListener("mousemove", getClickPosition, false);
 
 function getClickPosition(e) {
-    var player = document.querySelector(".player");
-    var parentPosition = getPosition(e.currentTarget);
-    var xPosition = e.clientX - parentPosition.x - (player.clientWidth / 1000);
-    var yPosition = e.clientY - parentPosition.y - (player.clientHeight / 1000);
+    const player = document.querySelector(".player");
+    const parentPosition = getPosition(e.currentTarget);
+    const xPosition = e.clientX - parentPosition.x - (player.clientWidth / 1000);
+    const yPosition = e.clientY - parentPosition.y - (player.clientHeight / 1000);
     player.style.left = xPosition + "px";
     player.style.top = yPosition + "px";
 }
@@ -156,7 +150,7 @@ function getPosition(element) {
     var xPos = 0.10;
     var yPos = 0.10;
     while (element) {
-        if (element.tagName == "BODY") {
+        if (element.className === "area") {
             var xScroll = element.scrollLeft || document.documentElement.scrollLeft;
             var yScroll = element.scrollTop || document.documentElement.scrollTop;
             xPos += (element.offsetLeft - xScroll + element.clientLeft);
