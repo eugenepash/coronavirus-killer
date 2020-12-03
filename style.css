@@ -13,11 +13,29 @@ body{
     
     
 }
+
+.headerGame{
+    position: absolute;
+    z-index: 90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+h1{
+    color: white;
+}
+.headerGif{
+    background-image: url(images/headerGif.gif);
+    background-size: cover;
+    height: 200px;
+    width: 200px;
+}
 .area{
-    border: 10px solid white;
+    border: 2px solid white;
     border-radius: 10px;
-    width: 1800px;
-    height: 900px;
+    width: 1700px;
+    height: 800px;
     position: relative;
     background-color: #121111;
     word-wrap: break-word;
@@ -41,6 +59,7 @@ button {
 
 .player {
     margin: 2px;
+    padding: 0px;
     border: 2px solid white;
     border-radius: 70px;
     height: 70px;
@@ -52,7 +71,6 @@ button {
     align-items: center;
     position: absolute;
     transition: all 0.3s linear;
-    background-size: cover;
 
 }
 
@@ -69,11 +87,11 @@ button {
     height: 40px;
     width: 200px;
     font-weight: 600;
-    
+    z-index: 10;
     background: #121111;
     color: white;
       border: 2px solid;
-      border-radius: 1px;
+     border-radius: 10px;
       transition: 0.2s;
 } 
 .startButton:hover { 
@@ -89,15 +107,19 @@ button {
     display: none;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    background: #f5c50a;
-    color: black;
+    background: #fbc243;
+    color: #121111;
     height: 40px;
     width: 200px;
     font-weight: 600;
-    z-index: 1;
+    border: 2px solid;
+      border-radius: 10px;
+      transition: 0.2s;
 }
-
+.stopButton:hover{
+    background: white;
+    color: #121111;
+}
 .settingsButton {
     margin: 20px;
     margin-left: 10px;
@@ -107,16 +129,23 @@ button {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background: #32588c;
+    background: #121111;
     color: white;
     font-weight: 600;
     z-index: 1;
+    border: 2px solid white;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+.settingsButton:hover{
+    color: black;
+    background-color: #fbc243;
 }
 
 .popupSettings {
     display: none;
     position: fixed;
-    z-index: 2;
+    z-index: 20;
     left: 0;
     top: 0;
     width: 100%;

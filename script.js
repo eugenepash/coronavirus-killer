@@ -1,28 +1,35 @@
-let startButton;
-startButton = document.querySelector('.startButton');
-// форма
-// Color
-// check controls
-const stopButton = document.querySelector('.stopButton'), player = document.querySelector('.player'),
-    settingsButton = document.querySelector('.settingsButton'),
-    popupSettings = document.querySelector('.popupSettings'), close = document.querySelector('.close'),
-    squareCheck = document.querySelector('.squareCheck'), circleCheck = document.querySelector('.circleCheck'),
-    redCheck = document.querySelector('.redCheck'), blueCheck = document.querySelector('.blueCheck'),
-    yellowCheck = document.querySelector('.yellowCheck'),
-    customColorCheck = document.querySelector('.customColorCheck'),
-    colorPicker = document.querySelector(".colorPicker"), mouseCheck = document.querySelector('.mouseCheck'),
-    keyboardCheck = document.querySelector('.keyboardCheck');
+const stopButton = document.querySelector('.stopButton'),
+      startButton = document.querySelector('.startButton'),
+      player = document.querySelector('.player'),
+      settingsButton = document.querySelector('.settingsButton'),
+      popupSettings = document.querySelector('.popupSettings'),
+      close = document.querySelector('.close'),
+      
+      // форма
+      squareCheck = document.querySelector('.squareCheck'),
+      circleCheck = document.querySelector('.circleCheck'),
+      // Color
+      redCheck = document.querySelector('.redCheck'),
+      blueCheck = document.querySelector('.blueCheck'),
+      yellowCheck = document.querySelector('.yellowCheck'),
+      customColorCheck = document.querySelector('.customColorCheck'),
+      colorPicker = document.querySelector(".colorPicker"),
+      // check controls
+      mouseCheck = document.querySelector('.mouseCheck'),
+      keyboardCheck = document.querySelector('.keyboardCheck');
 
 
 startButton.onclick = function () {
     startButton.style.display = 'none';
     stopButton.style.display = 'flex';
     player.style.display = 'flex';
+    document.querySelector('.headerGame').style.display = 'none';
 }
 stopButton.onclick = function () {
     stopButton.style.display = 'none';
     startButton.style.display = 'flex';
     player.style.display = 'none';
+    document.querySelector('.headerGame').style.display = 'flex';
 }
 
 settingsButton.onclick = function () {
@@ -87,80 +94,60 @@ buttonSetCustomImage.onclick = function (){
 // keyboard
 keyboardCheck.onclick = function () {
     document.body.removeEventListener("mousemove", getClickPosition, false);
-    document.addEventListener('keydown', keyPress);
+    document.addEventListener('keydown');
 }
 
-function place(id, x_pos, y_pos) {
-    const element = document.getElementById(id);
-    element.style.position = "absolute";
-    element.style.left = x_pos + 'px';
-    element.style.top = y_pos + 'px';
-}
 
 function update() {
-    document.removeEventListener('keydown', keyPress);
+    document.removeEventListener('keydown');
 }
 
-function keyPress(e) {
-    const x = e.keyCode;
-    const move = document.getElementById("move").getBoundingClientRect();
-    const left = parseInt(move.left, 10);
-    const top = parseInt(move.top, 10);
-    switch (x) {
-        case 37:
-            place('move', left - 50, top);
-            break;
+let left = 0;
+let bottom = 0;
 
-        case 39:
-            place('move', left + 50, top);
-            break;
-
-        case 38:
-            place('move', left, top - 50);
-            break;
-
-        case 40:
-            place('move', left, top + 50);
-            break;
+window.onkeydown = function move_left() {
+    if (event.keyCode === 37) {
+        left = left - 20;
+        player.style.left = left + 'px';
+    } else if (event.keyCode === 39) {
+        left = left + 20;
+        player.style.left = left + 'px';
     }
-    // console.log(x);
 
-}
-update();
+    if (event.keyCode === 38) {
+        bottom = bottom - 20;
+        player.style.bottom = bottom + 'px';
+    } else if (event.keyCode ===40) {
+        bottom = bottom + 20;
+        player.style.bottom = bottom + 'px';
+    }
+};
+
 
 // Mouse
 mouseCheck.onclick = function () {
     document.body.addEventListener("mousemove", getClickPosition, false);
+
+    function keyPress() {
+
+    }
+
     document.removeEventListener('keydown', keyPress);
 }
-const mouseX = 5;
-const mouseY = 5;
+
 document.body.addEventListener("mousemove", getClickPosition, false);
 
-function getClickPosition(e) {
-    const player = document.querySelector(".player");
-    const parentPosition = getPosition(e.currentTarget);
-    const xPosition = e.clientX - parentPosition.x - (player.clientWidth / 1000);
-    const yPosition = e.clientY - parentPosition.y - (player.clientHeight / 1000);
+function getClickPosition(i) {
+    const parentPosition = getPosition(i.currentTarget);
+    const xPosition = i.clientX - parentPosition.x;
+    const yPosition = i.clientY - parentPosition.y;
     player.style.left = xPosition + "px";
     player.style.top = yPosition + "px";
 }
 
 function getPosition(element) {
-    var xPos = 0.10;
-    var yPos = 0.10;
-    while (element) {
-        if (element.className === "area") {
-            var xScroll = element.scrollLeft || document.documentElement.scrollLeft;
-            var yScroll = element.scrollTop || document.documentElement.scrollTop;
-            xPos += (element.offsetLeft - xScroll + element.clientLeft);
-            yPos += (element.offsetTop - yScroll + element.clientTop);
-        } else {
-            xPos += (element.offsetLeft - element.scrollLeft + element.clientLeft);
-            yPos += (element.offsetTop - element.scrollTop + element.clientTop);
-        }
-        element = element.offsetParent;
-    }
+    const xPos = 0;
+    const yPos = 0;
     return {
         x: xPos,
         y: yPos
