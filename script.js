@@ -87,7 +87,7 @@ const uploadImg = document.querySelector('.uploadImg');
 
 
 buttonSetCustomImage.onclick = function (){
-    alert('смена картинки');
+    
 }
 
 
@@ -102,24 +102,29 @@ function update() {
     document.removeEventListener('keydown');
 }
 
-let left = 0;
-let bottom = 0;
+let left1 = 0;
+let top1 = 0;
 
 window.onkeydown = function move_left() {
     if (event.keyCode === 37) {
-        left = left - 20;
-        player.style.left = left + 'px';
+        left1 = left1 - 30;
+        player.style.left = left1 + 'px';
     } else if (event.keyCode === 39) {
-        left = left + 20;
-        player.style.left = left + 'px';
+        left1 = left1 + 30;
+        player.style.left = left1 + 'px';
     }
-
-    if (event.keyCode === 38) {
-        bottom = bottom - 20;
-        player.style.bottom = bottom + 'px';
+    if(event.keyCode === 38) {
+        top1 = top1 - 30;
+        player.style.top = top1 + 'px';
     } else if (event.keyCode ===40) {
-        bottom = bottom + 20;
-        player.style.bottom = bottom + 'px';
+        top1 = top1 + 30;
+        player.style.top = top1 + 'px';
+    }
+    if(event.keyCode === 37 && event.keyCode === 38){
+        left1 = left1 - 30;
+        player.style.left = left1 + 'px';
+        top1 = top1 - 30;
+        player.style.top = top1 + 'px';
     }
 };
 
@@ -127,27 +132,36 @@ window.onkeydown = function move_left() {
 // Mouse
 mouseCheck.onclick = function () {
     document.body.addEventListener("mousemove", getClickPosition, false);
-
-    function keyPress() {
-
-    }
-
     document.removeEventListener('keydown', keyPress);
 }
-
+var mouseX = 0;
+var mouseY = 0;
 document.body.addEventListener("mousemove", getClickPosition, false);
 
-function getClickPosition(i) {
-    const parentPosition = getPosition(i.currentTarget);
-    const xPosition = i.clientX - parentPosition.x;
-    const yPosition = i.clientY - parentPosition.y;
+function getClickPosition(e) {
+    var player = document.querySelector(".player");
+    var parentPosition = getPosition(e.currentTarget);
+    var xPosition = e.clientX - parentPosition.x - (player.clientWidth / 1000);
+    var yPosition = e.clientY - parentPosition.y - (player.clientHeight / 1000);
     player.style.left = xPosition + "px";
     player.style.top = yPosition + "px";
 }
 
 function getPosition(element) {
-    const xPos = 0;
-    const yPos = 0;
+    var xPos = 0.10;
+    var yPos = 0.10;
+    while (element) {
+        if (element.tagName == "BODY") {
+            var xScroll = element.scrollLeft || document.documentElement.scrollLeft;
+            var yScroll = element.scrollTop || document.documentElement.scrollTop;
+            xPos += (element.offsetLeft - xScroll + element.clientLeft);
+            yPos += (element.offsetTop - yScroll + element.clientTop);
+        } else {
+            xPos += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+            yPos += (element.offsetTop - element.scrollTop + element.clientTop);
+        }
+        element = element.offsetParent;
+    }
     return {
         x: xPos,
         y: yPos

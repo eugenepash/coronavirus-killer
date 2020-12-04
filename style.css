@@ -6,7 +6,6 @@ body{
     margin: 0 auto;
     background-color: #121111;
     
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,9 +35,7 @@ h1{
     border-radius: 10px;
     width: 1700px;
     height: 800px;
-    position: relative;
     background-color: #121111;
-    word-wrap: break-word;
 }
 
 button {
@@ -69,8 +66,8 @@ button {
     display: none;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    transition: all 0.3s linear;
+    position: fixed;
+    transition: all 0.2s linear;
 
 }
 
@@ -92,7 +89,7 @@ button {
     color: white;
       border: 2px solid;
      border-radius: 10px;
-      transition: 0.2s;
+      transition: 0.2s linear;
 } 
 .startButton:hover { 
     background: white;
@@ -114,7 +111,7 @@ button {
     font-weight: 600;
     border: 2px solid;
       border-radius: 10px;
-      transition: 0.2s;
+      transition: 0.2s linear;
 }
 .stopButton:hover{
     background: white;
@@ -135,7 +132,7 @@ button {
     z-index: 1;
     border: 2px solid white;
     border-radius: 10px;
-    transition: 0.2s;
+    transition: 0.2s linear;
 }
 .settingsButton:hover{
     color: black;
