@@ -65,7 +65,6 @@ yellowCheck.onclick = function () {
 }
 customColorCheck.onclick = function () {
     colorPicker.style.display = 'block';
-
 }
 
 

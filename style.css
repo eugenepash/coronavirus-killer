@@ -5,10 +5,10 @@
 body{
     margin: 0 auto;
     background-color: #121111;
-    
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     
     
 }
@@ -36,6 +36,10 @@ h1{
     width: 1700px;
     height: 800px;
     background-color: #121111;
+    overflow: hidden;
+    
+    position: relative;
+    
 }
 
 button {
@@ -44,6 +48,7 @@ button {
 
 .head {
     display: flex;
+    border-bottom: 2px solid white;
 }
 
 .left {
@@ -55,6 +60,7 @@ button {
 }
 
 .player {
+    top: 0;
     margin: 2px;
     padding: 0px;
     border: 2px solid white;
@@ -66,8 +72,9 @@ button {
     display: none;
     justify-content: center;
     align-items: center;
-    position: fixed;
+    position: sticky;
     transition: all 0.2s linear;
+    overflow: hidden;
 
 }
 
@@ -148,8 +155,7 @@ button {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .close {
@@ -179,13 +185,20 @@ button {
 
 .settings-header {
     padding: 20px 16px;
-    background-color: #275961;
+    background-color: #121111;
     color: white;
 }
 
 .settings-body {
     padding: 2px 16px;
     display: flex;
+}
+.settings-body input{
+    height: 20px;
+    width: 20px;
+}
+.settings-body label, div{
+    font-size: 20px;
 }
 
 .settings-content {
@@ -198,7 +211,9 @@ button {
     width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 @keyframes animatetop {
@@ -251,6 +266,9 @@ input {
     background-size: cover;
     border: 2px solid black;
 }
+#upload{
+    width: 100px;
+}
 #upload-img{
     height: 100px;
     width: 100px;
@@ -260,5 +278,5 @@ input {
     display: none;
 }
 .customColor{
-    width: 200px;
+    width: 250px;
 }
