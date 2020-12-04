@@ -79,6 +79,10 @@
                                 <label>
                                     <input data-jscolor="{value:'rgba(255,255,255,1)'}" , onInput="updateText(this.jscolor)">
                                 </label>
+                                <p style="font-weight: 600; ">Цвет обводки:</p>
+                                <label>
+                                    <input data-jscolor="{value:'rgba(255,255,255,1)'}" , onInput="updateBorder(this.jscolor)">
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -141,6 +145,9 @@
 
         function updateText(picker) {
             document.querySelector('.player').style.color = picker.toRGBAString()
+        }
+       function updateBorder(picker) {
+            document.querySelector('.player').style.borderColor = picker.toRGBAString()
         }
         jscolor.trigger('onInput');
 

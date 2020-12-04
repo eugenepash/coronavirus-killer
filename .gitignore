@@ -1,2 +1,9 @@
 
 *.log
+.idea/workspace.xml
+.idea/dictionaries/jekpa.xml
+.idea/jsLibraryMappings.xml
+.idea/mini-game-2.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml

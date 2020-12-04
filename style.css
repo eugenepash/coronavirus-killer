@@ -125,14 +125,11 @@ button {
     color: #121111;
 }
 .settingsButton {
-    margin: 20px;
-    margin-left: 10px;
-    display: none;
+    margin: 20px 20px 20px 10px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     background: #121111;
     color: white;
     font-weight: 600;
@@ -193,22 +190,15 @@ button {
     padding: 2px 16px;
     display: flex;
 }
-.settings-body input{
-    height: 20px;
-    width: 20px;
-}
-.settings-body label, div{
-    font-size: 20px;
-}
 
 .settings-content {
     position: relative;
-    background-color: #fefefe;
+    background-color: floralwhite;
     margin: auto;
-    padding: 0;
-    padding-bottom: 20px;
+    padding: 0 0 20px;
     border: 1px solid #888;
     width: 80%;
+    height: 40%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation-name: animatetop;
     animation-duration: 0.4s;
@@ -221,7 +211,6 @@ button {
         top: -300px;
         opacity: 0
     }
-
     to {
         top: 0;
         opacity: 1
@@ -238,8 +227,8 @@ input {
     top: 50%;
     margin-top: -12px;
     content: ' ';
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
 
 }
 

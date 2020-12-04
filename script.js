@@ -46,8 +46,6 @@ window.onclick = function (event) {
 
 //  color check
 
-
-
 redCheck.onclick = function () {
     player.style.background = '#B43428';
     player.style.color = 'white';
@@ -59,7 +57,7 @@ blueCheck.onclick = function () {
     colorPicker.style.display = 'none';
 }
 yellowCheck.onclick = function () {
-    player.style.background = '#F5CF2F';
+    player.style.background = '#fbc243';
     player.style.color = 'black';
     colorPicker.style.display = 'none';
 }
@@ -128,6 +126,10 @@ window.onkeydown = function move_left() {
 };
 
 
+function keyPress() {
+
+}
+
 // Mouse
 mouseCheck.onclick = function () {
     document.body.addEventListener("mousemove", getClickPosition, false);
@@ -150,7 +152,7 @@ function getPosition(element) {
     var xPos = 0.10;
     var yPos = 0.10;
     while (element) {
-        if (element.tagName == "BODY") {
+        if (element.tagName === "BODY") {
             var xScroll = element.scrollLeft || document.documentElement.scrollLeft;
             var yScroll = element.scrollTop || document.documentElement.scrollTop;
             xPos += (element.offsetLeft - xScroll + element.clientLeft);
