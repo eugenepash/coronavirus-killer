@@ -10,7 +10,6 @@ body{
     align-items: center;
     overflow: hidden;
     
-    
 }
 
 .headerGame{
@@ -33,12 +32,14 @@ h1{
 .area{
     border: 2px solid white;
     border-radius: 10px;
-    width: 1700px;
+    width: 1800px;
     height: 800px;
     background-color: #121111;
     overflow: hidden;
     
     position: relative;
+    
+    
     
 }
 
@@ -95,11 +96,11 @@ button {
     background: #121111;
     color: white;
       border: 2px solid;
-     border-radius: 10px;
+     border-radius: 6px;
       transition: 0.2s linear;
 } 
 .startButton:hover { 
-    background: white;
+    background: #fbc243;
     color: black;
 }
 
@@ -117,7 +118,7 @@ button {
     width: 200px;
     font-weight: 600;
     border: 2px solid;
-      border-radius: 10px;
+      border-radius: 6px;
       transition: 0.2s linear;
 }
 .stopButton:hover{
@@ -135,7 +136,7 @@ button {
     font-weight: 600;
     z-index: 1;
     border: 2px solid white;
-    border-radius: 10px;
+    border-radius: 6px;
     transition: 0.2s linear;
 }
 .settingsButton:hover{
@@ -231,11 +232,35 @@ input {
     height: 0;
 
 }
-
+.buttonSetCustomImage{
+    height: 40px;
+    width: 100px;
+    margin: 20px 20px 20px 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: floralwhite;
+    color: black;
+    font-weight: 600;
+    z-index: 1;
+    border: 2px solid black;
+    border-radius: 6px;
+    transition: 0.2s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonSetCustomImage:hover{
+    background: black;
+    color: white;
+}
 .setImage {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
+    width: 200px;
     
 }
 
@@ -250,18 +275,22 @@ input {
     margin: 10px;
 }
 .preview{
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
     background-size: cover;
     border: 2px solid black;
+    border-radius: 6px;
 }
 #upload{
     width: 100px;
 }
 #upload-img{
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
     background-size: cover;
+}
+.uploadImgClass{
+    margin-bottom: 10px;
 }
 .colorPicker{
     display: none;
