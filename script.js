@@ -1,4 +1,4 @@
-const stopButton = document.querySelector('.stopButton'),
+let stopButton = document.querySelector('.stopButton'),
       startButton = document.querySelector('.startButton'),
       player = document.querySelector('.player'),
       settingsButton = document.querySelector('.settingsButton'),
@@ -19,18 +19,20 @@ const stopButton = document.querySelector('.stopButton'),
       keyboardCheck = document.querySelector('.keyboardCheck');
 
 
+
 startButton.onclick = function () {
     startButton.style.display = 'none';
     stopButton.style.display = 'flex';
     player.style.display = 'flex';
     document.querySelector('.headerGame').style.display = 'none';
-    
 }
+    
 stopButton.onclick = function () {
     stopButton.style.display = 'none';
     startButton.style.display = 'flex';
     player.style.display = 'none';
     document.querySelector('.headerGame').style.display = 'flex';
+
 }
 
 settingsButton.onclick = function () {
@@ -170,37 +172,41 @@ function getPosition(element) {
     };
 }
 
-
-
-
-
-
-
 // Рандомайзер кружков в меню.
 
-(function makeDivMenu(){
-    // vary size for fun
-    var divsize = ((Math.random()*100) + 40).toFixed();
-    var color = '#'+ Math.round(0xffffff * Math.random()).toString(16);
-    var rounded = 70;
+(makeDiv = function () {
+    const divsize = ((Math.random() * 100) + 20).toFixed();
+    const border = '#' + Math.round(0xffffff * Math.random()).toString(16);
+    const rounded = 70;
     $newdiv = $('<div/>').css({
-        'width':divsize+'px',
-        'height':divsize+'px',
-        'border-radius': rounded+'px',
-        'background-color': color
+        'width': divsize + 'px',
+        'height': divsize + 'px',
+        'border-radius': rounded + 'px',
+        'border': '2px dashed' + border,
+        'position': 'absolute',
+        'cursor':'pointer',
+        'display': 'flex'
     });
-
-    // make position sensitive to size and document width
-    var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
-    var posy = (Math.random() * ($(document).height() - divsize)).toFixed();
-
+    const posx = (Math.random() * ($(document).width() - divsize)).toFixed();
+    // const posy = (Math.random() * ($(document).height() - divsize)).toFixed();
     $newdiv.css({
-        'position':'absolute',
-        'left':posx+'px',
-        'top':posy+'px',
-        'display':'none'
-    }).appendTo( 'body' ).fadeIn(400).delay(500).fadeOut(300, function(){
-      $(this).remove();
-      makeDivMenu(); 
-    }); 
-})();
+        'position': 'absolute',
+        'left': posx + 'px',
+        'top': '900' + 'px',
+        'display': 'none'
+    }).appendTo('body').fadeIn(2000, function() {makeDiv();});
+
+    $newdiv.click(function () {
+        this.remove();
+    });
+    })();
+
+
+// вылет кружков снизу
+
+
+       
+       
+       
+       
+       

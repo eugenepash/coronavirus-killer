@@ -109,7 +109,7 @@ button {
     height: 40px;
     width: 200px;
     font-weight: 600;
-    border: 2px solid;
+    border: 2px solid ;
       border-radius: 6px;
       transition: 0.2s linear;
 }
@@ -127,7 +127,7 @@ button {
     color: white;
     font-weight: 600;
     z-index: 1;
-    border: 2px solid white;
+    border: 2px solid ;
     border-radius: 6px;
     transition: 0.2s linear;
 }
@@ -290,3 +290,42 @@ input {
 .customColor{
     width: 250px;
 }
+#circleBad{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    
+    height: 60px;
+    width: 60px;
+    background:aliceblue;
+    border: 2px solid red;
+    border-radius: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
