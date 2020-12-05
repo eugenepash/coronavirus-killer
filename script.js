@@ -24,6 +24,7 @@ startButton.onclick = function () {
     stopButton.style.display = 'flex';
     player.style.display = 'flex';
     document.querySelector('.headerGame').style.display = 'none';
+    
 }
 stopButton.onclick = function () {
     stopButton.style.display = 'none';
@@ -168,3 +169,38 @@ function getPosition(element) {
         y: yPos
     };
 }
+
+
+
+
+
+
+
+// Рандомайзер кружков в меню.
+
+(function makeDivMenu(){
+    // vary size for fun
+    var divsize = ((Math.random()*100) + 40).toFixed();
+    var color = '#'+ Math.round(0xffffff * Math.random()).toString(16);
+    var rounded = 70;
+    $newdiv = $('<div/>').css({
+        'width':divsize+'px',
+        'height':divsize+'px',
+        'border-radius': rounded+'px',
+        'background-color': color
+    });
+
+    // make position sensitive to size and document width
+    var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
+    var posy = (Math.random() * ($(document).height() - divsize)).toFixed();
+
+    $newdiv.css({
+        'position':'absolute',
+        'left':posx+'px',
+        'top':posy+'px',
+        'display':'none'
+    }).appendTo( 'body' ).fadeIn(400).delay(500).fadeOut(300, function(){
+      $(this).remove();
+      makeDivMenu(); 
+    }); 
+})();

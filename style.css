@@ -8,8 +8,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    
+    overflow: hidden;   
 }
 
 .headerGame{
@@ -30,17 +29,11 @@ h1{
     width: 200px;
 }
 .area{
-    border: 2px solid white;
-    border-radius: 10px;
-    width: 1800px;
-    height: 800px;
+    width: 1920px;
+    height: 1080px;
     background-color: #121111;
     overflow: hidden;
-    
     position: relative;
-    
-    
-    
 }
 
 button {
@@ -49,7 +42,6 @@ button {
 
 .head {
     display: flex;
-    border-bottom: 2px solid white;
 }
 
 .left {
@@ -73,7 +65,7 @@ button {
     display: none;
     justify-content: center;
     align-items: center;
-    position: sticky;
+    position: fixed;
     transition: all 0.2s linear;
     overflow: hidden;
 
