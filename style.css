@@ -42,6 +42,9 @@ button {
 
 .head {
     display: flex;
+    border-bottom: 2px solid white;
+    background: #121111;
+    z-index: 1;
 }
 
 .left {

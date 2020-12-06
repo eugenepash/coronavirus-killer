@@ -25,6 +25,35 @@ startButton.onclick = function () {
     stopButton.style.display = 'flex';
     player.style.display = 'flex';
     document.querySelector('.headerGame').style.display = 'none';
+
+
+    (makeDiv = function () {
+        const divsize = ((Math.random() * 100) + 20).toFixed();
+        const border = '#' + Math.round(0xffffff * Math.random()).toString(16);
+        const rounded = 70;
+        $newdiv = $('<div class="nd">').css({
+            'width': divsize + 'px',
+            'height': divsize + 'px',
+            'border-radius': rounded + 'px',
+            'border': '2px dashed' + border,
+            'position': 'inherit',
+            'cursor': 'pointer',
+            'display': 'flex'
+        });
+        const posx = (Math.random() * ($(document).width() - divsize)).toFixed();
+        // const posy = (Math.random() * ($(document).height() - divsize)).toFixed();
+        $newdiv.css({
+            'position': 'absolute',
+            'left': posx + 'px',
+            'top': '1200' + 'px',
+            'display': 'none'
+        }).appendTo('.area').fadeIn(2000, function () {
+            makeDiv();
+        });
+
+        $newdiv.animate({top: "-1px"}, 13000);
+        
+    })();
 }
     
 stopButton.onclick = function () {
@@ -33,6 +62,11 @@ stopButton.onclick = function () {
     player.style.display = 'none';
     document.querySelector('.headerGame').style.display = 'flex';
 
+    (makeDiv = function () {
+        makeDiv.remove;});
+
+    ($newdiv = function () {
+        this.remove;});
 }
 
 settingsButton.onclick = function () {
@@ -174,39 +208,20 @@ function getPosition(element) {
 
 // Рандомайзер кружков в меню.
 
-(makeDiv = function () {
-    const divsize = ((Math.random() * 100) + 20).toFixed();
-    const border = '#' + Math.round(0xffffff * Math.random()).toString(16);
-    const rounded = 70;
-    $newdiv = $('<div/>').css({
-        'width': divsize + 'px',
-        'height': divsize + 'px',
-        'border-radius': rounded + 'px',
-        'border': '2px dashed' + border,
-        'position': 'absolute',
-        'cursor':'pointer',
-        'display': 'flex'
-    });
-    const posx = (Math.random() * ($(document).width() - divsize)).toFixed();
-    // const posy = (Math.random() * ($(document).height() - divsize)).toFixed();
-    $newdiv.css({
-        'position': 'absolute',
-        'left': posx + 'px',
-        'top': '900' + 'px',
-        'display': 'none'
-    }).appendTo('body').fadeIn(2000, function() {makeDiv();});
-
-    $newdiv.click(function () {
-        this.remove();
-    });
-    })();
 
 
+
+
+// train.onclick = function() {
+//     let start = Date.now();
+//
+//     let timer = setInterval(function() {
+//         let timePassed = Date.now() - start;
+//
+//         train.style.left = timePassed / 5 + 'px';
+//
+//         if (timePassed > 2000) clearInterval(timer);
+//
+//     }, 20);
 // вылет кружков снизу
 
-
-       
-       
-       
-       
-       
