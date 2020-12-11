@@ -41,7 +41,6 @@ startButton.onclick = function () {
     stopButton.style.display = 'flex';
     player.style.display = 'flex';
     document.querySelector('.headerGame').style.display = 'none';
-
     //замена курсора
     $('html,body').css('cursor', 'crosshair');
 
@@ -73,26 +72,27 @@ startButton.onclick = function () {
             $newdiv.animate({top: "1px"}, 15000);
             //уничтожение при касании
             $($newdiv).mouseover(function () {
+
                 this.remove();
             //счет:
+
                 //инкремент
                 $.fn.extend({
                     increment: function () {
                         return this.text( function (i, currentText) {
                             return parseInt(currentText, 0) + 1;});}});
-                //дикремент
-                $.fn.extend({
-                    decrement: function () {
-                        return this.text( function (e, currentText) {
-                            return parseInt(currentText, 0) - 1;});}});
-
                 //вывод счета
                 $(".score").increment();
-            //уменьшение радиуса
+
+            //уменьшение радиуса и скорости
                 $('.player').css({
-                    'height' : '-=1' + 'px',
-                    'width'  : '-=1' + 'px',
+                    'height' : '-=0.2' + 'px',
+                    'width'  : '-=0.2' + 'px',
                 });
+             //ускорение генерации после сбора
+                $newdiv.fadeIn( '-=' + 1, function () {
+                        makeDiv();
+                })
 
             })
         });
@@ -117,6 +117,12 @@ stopButton.onclick = function () {
     $('.newDiv').remove();
     // обнуление счета
     $(".score").html('0');
+    //обнуление player
+    $('.player').css({
+        'height' : '70' + 'px',
+        'width'  : '70' + 'px',
+        'transition' : 'all 0.2s linear',
+    });
 }
 
 // Настройки
