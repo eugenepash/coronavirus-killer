@@ -18,6 +18,7 @@ let stopButton = document.querySelector('.stopButton'),
       mouseCheck = document.querySelector('.mouseCheck'),
       keyboardCheck = document.querySelector('.keyboardCheck');
 
+
 let outputCoordinate = document.querySelector('.outputCoordinate');
 let score = document.querySelector('.score');
 
@@ -46,7 +47,7 @@ startButton.onclick = function () {
         const divsize = ((Math.random() * 80) + 20).toFixed();
         const border = '#' + Math.round(0xffffff * Math.random()).toString(16);
         const rounded = 70;
-        $newdiv = $('<div/>').css({
+        $newdiv = $('<div class="newDiv">').css({
             'width': divsize + 'px',
             'height': divsize + 'px',
             'border-radius': rounded + 'px',
@@ -65,8 +66,12 @@ startButton.onclick = function () {
         }).appendTo('.area').fadeIn(1000, function () {
             makeDiv();
             $newdiv.animate({top: "1px"}, 15000);
+
+
         });
+
     })();
+
 }
 
 
@@ -77,13 +82,12 @@ stopButton.onclick = function () {
     player.style.display = 'none';
     document.querySelector('.headerGame').style.display = 'flex';
 
-
-
+    //остановка генерации
     (makeDiv = function () {
         $newdiv.remove();
-
     });
-
+    //удаление сгенерированных кружков
+    $('.newDiv').remove();
 }
 
 // Настройки
@@ -196,22 +200,19 @@ document.body.addEventListener("mousemove", getClickPosition, false);
 
 function getClickPosition(e) {
     const parentPosition = getPosition(e.currentTarget);
-    var xPosition = e.clientX - parentPosition.x - (player.clientWidth / 1000);
-    var yPosition = e.clientY - parentPosition.y - (player.clientHeight / 1000);
+    var xPosition = e.pageX - parentPosition.x - (player.clientWidth / 1000);
+    var yPosition = e.pageY - parentPosition.y - (player.clientHeight / 1000);
     player.style.left = xPosition + "px";
     player.style.top = yPosition + "px";
-    outputCoordinate.innerHTML = e.clientX + ':' + e.clientY;
+    outputCoordinate.innerHTML = e.pageX + ':' + e.pageY;
 
 }
-
-function getPosition(player) {
-    var xPos = 0.10;
-    var yPos = 0.10;
+function getPosition(w) {
+    var xPos = 0;
+    var yPos = 0;
     return {
         x: xPos,
         y: yPos
     };
-
-
-
 }
+
