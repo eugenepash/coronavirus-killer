@@ -42,6 +42,10 @@ startButton.onclick = function () {
     player.style.display = 'flex';
     document.querySelector('.headerGame').style.display = 'none';
 
+    //замена курсора
+    $('html,body').css('cursor', 'crosshair');
+
+
     //генерация кружочков для сбора
     (makeDiv = function () {
         const divsize = ((Math.random() * 80) + 20).toFixed();
@@ -53,7 +57,6 @@ startButton.onclick = function () {
             'border-radius': rounded + 'px',
             'border': '2px solid' + border,
             'position': 'inherit',
-            'cursor': 'pointer',
             'display': 'flex'
         });
         const posx = (Math.random() * ($(document).width() - divsize)).toFixed();
@@ -65,13 +68,35 @@ startButton.onclick = function () {
             'display': 'none'
         }).appendTo('.area').fadeIn(1000, function () {
             makeDiv();
+
+            //движение кружков вверх
             $newdiv.animate({top: "1px"}, 15000);
+            //уничтожение при касании
+            $($newdiv).mouseover(function () {
+                this.remove();
+            //счет:
+                //инкремент
+                $.fn.extend({
+                    increment: function () {
+                        return this.text( function (i, currentText) {
+                            return parseInt(currentText, 0) + 1;});}});
+                //дикремент
+                $.fn.extend({
+                    decrement: function () {
+                        return this.text( function (e, currentText) {
+                            return parseInt(currentText, 0) - 1;});}});
 
+                //вывод счета
+                $(".score").increment();
+            //уменьшение радиуса
+                $('.player').css({
+                    'height' : '-=1' + 'px',
+                    'width'  : '-=1' + 'px',
+                });
 
+            })
         });
-
     })();
-
 }
 
 
@@ -82,12 +107,16 @@ stopButton.onclick = function () {
     player.style.display = 'none';
     document.querySelector('.headerGame').style.display = 'flex';
 
+    //курсор
+    $('html,body').css('cursor', 'default');
     //остановка генерации
     (makeDiv = function () {
         $newdiv.remove();
     });
     //удаление сгенерированных кружков
     $('.newDiv').remove();
+    // обнуление счета
+    $(".score").html('0');
 }
 
 // Настройки
@@ -215,4 +244,8 @@ function getPosition(w) {
         y: yPos
     };
 }
+
+
+
+
 

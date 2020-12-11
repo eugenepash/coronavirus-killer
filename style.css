@@ -90,7 +90,7 @@ button {
 .player {
     top: 0;
     margin: 2px;
-    padding: 0px;
+    padding: -10px;
     border: 2px solid white;
     border-radius: 70px;
     height: 70px;
