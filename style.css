@@ -51,10 +51,42 @@ button {
     display: flex;
 }
 
-.right {
+.right_center {
     display: flex;
 }
-
+.right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.outputCoordinate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    color: white;
+    background: #121111;
+    font-size: 15px;
+    border: 2px solid white;
+    width: 150px;
+    height: 50px;
+}
+.scoreDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    color: white;
+    background: #121111;
+    font-size: 15px;
+    border: 2px solid white;
+    width: 150px;
+    height: 50px;
+    margin-left: 10px;
+}
+.score{
+    margin-left: 5px;
+}
 .player {
     top: 0;
     margin: 2px;

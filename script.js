@@ -4,7 +4,7 @@ let stopButton = document.querySelector('.stopButton'),
       settingsButton = document.querySelector('.settingsButton'),
       popupSettings = document.querySelector('.popupSettings'),
       close = document.querySelector('.close'),
-      
+      area = document.querySelector('.area'),
       // форма
       squareCheck = document.querySelector('.squareCheck'),
       circleCheck = document.querySelector('.circleCheck'),
@@ -18,24 +18,39 @@ let stopButton = document.querySelector('.stopButton'),
       mouseCheck = document.querySelector('.mouseCheck'),
       keyboardCheck = document.querySelector('.keyboardCheck');
 
+let outputCoordinate = document.querySelector('.outputCoordinate');
+let score = document.querySelector('.score');
 
 
+//Получение координат $newdiv
+
+
+
+
+
+
+
+
+
+
+
+//СТАРТ
 startButton.onclick = function () {
     startButton.style.display = 'none';
     stopButton.style.display = 'flex';
     player.style.display = 'flex';
     document.querySelector('.headerGame').style.display = 'none';
 
-
+    //генерация кружочков для сбора
     (makeDiv = function () {
-        const divsize = ((Math.random() * 100) + 20).toFixed();
+        const divsize = ((Math.random() * 80) + 20).toFixed();
         const border = '#' + Math.round(0xffffff * Math.random()).toString(16);
         const rounded = 70;
-        $newdiv = $('<div class="nd">').css({
+        $newdiv = $('<div/>').css({
             'width': divsize + 'px',
             'height': divsize + 'px',
             'border-radius': rounded + 'px',
-            'border': '2px dashed' + border,
+            'border': '2px solid' + border,
             'position': 'inherit',
             'cursor': 'pointer',
             'display': 'flex'
@@ -47,28 +62,31 @@ startButton.onclick = function () {
             'left': posx + 'px',
             'top': '1200' + 'px',
             'display': 'none'
-        }).appendTo('.area').fadeIn(2000, function () {
+        }).appendTo('.area').fadeIn(1000, function () {
             makeDiv();
+            $newdiv.animate({top: "1px"}, 15000);
         });
-
-        $newdiv.animate({top: "-1px"}, 13000);
-        
     })();
 }
-    
+
+
+// СТОП
 stopButton.onclick = function () {
     stopButton.style.display = 'none';
     startButton.style.display = 'flex';
     player.style.display = 'none';
     document.querySelector('.headerGame').style.display = 'flex';
 
-    (makeDiv = function () {
-        makeDiv.remove;});
 
-    ($newdiv = function () {
-        this.remove;});
+
+    (makeDiv = function () {
+        $newdiv.remove();
+
+    });
+
 }
 
+// Настройки
 settingsButton.onclick = function () {
     popupSettings.style.display = 'block';
 }
@@ -177,51 +195,23 @@ var mouseY = 0;
 document.body.addEventListener("mousemove", getClickPosition, false);
 
 function getClickPosition(e) {
-    var player = document.querySelector(".player");
-    var parentPosition = getPosition(e.currentTarget);
+    const parentPosition = getPosition(e.currentTarget);
     var xPosition = e.clientX - parentPosition.x - (player.clientWidth / 1000);
     var yPosition = e.clientY - parentPosition.y - (player.clientHeight / 1000);
     player.style.left = xPosition + "px";
     player.style.top = yPosition + "px";
+    outputCoordinate.innerHTML = e.clientX + ':' + e.clientY;
+
 }
 
-function getPosition(element) {
+function getPosition(player) {
     var xPos = 0.10;
     var yPos = 0.10;
-    while (element) {
-        if (element.tagName === "BODY") {
-            var xScroll = element.scrollLeft || document.documentElement.scrollLeft;
-            var yScroll = element.scrollTop || document.documentElement.scrollTop;
-            xPos += (element.offsetLeft - xScroll + element.clientLeft);
-            yPos += (element.offsetTop - yScroll + element.clientTop);
-        } else {
-            xPos += (element.offsetLeft - element.scrollLeft + element.clientLeft);
-            yPos += (element.offsetTop - element.scrollTop + element.clientTop);
-        }
-        element = element.offsetParent;
-    }
     return {
         x: xPos,
         y: yPos
     };
+
+
+
 }
-
-// Рандомайзер кружков в меню.
-
-
-
-
-
-// train.onclick = function() {
-//     let start = Date.now();
-//
-//     let timer = setInterval(function() {
-//         let timePassed = Date.now() - start;
-//
-//         train.style.left = timePassed / 5 + 'px';
-//
-//         if (timePassed > 2000) clearInterval(timer);
-//
-//     }, 20);
-// вылет кружков снизу
-
