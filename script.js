@@ -49,6 +49,7 @@ startButton.onclick = function () {
     (makeDiv = function () {
         const divsize = ((Math.random() * 80) + 20).toFixed();
         const border = '#' + Math.round(0xffffff * Math.random()).toString(16);
+        let makeDivFadeIn = 1000;
         const rounded = 70;
         $newdiv = $('<div class="newDiv">').css({
             'width': divsize + 'px',
@@ -65,7 +66,7 @@ startButton.onclick = function () {
             'left': posx + 'px',
             'top': '1200' + 'px',
             'display': 'none'
-        }).appendTo('.area').fadeIn(1000, function () {
+        }).appendTo('.area').fadeIn( makeDivFadeIn, function () {
             makeDiv();
 
             //движение кружков вверх
@@ -86,15 +87,13 @@ startButton.onclick = function () {
 
             //уменьшение радиуса и скорости
                 $('.player').css({
-                    'height' : '-=0.2' + 'px',
-                    'width'  : '-=0.2' + 'px',
+                    'height' : '-=0.1' + 'px',
+                    'width'  : '-=0.1' + 'px',
                 });
              //ускорение генерации после сбора
-                $newdiv.fadeIn( '-=' + 1, function () {
-                        makeDiv();
-                })
+                makeDivFadeIn = makeDivFadeIn - 2;
 
-            })
+            });
         });
     })();
 }
