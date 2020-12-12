@@ -100,11 +100,14 @@ button {
     display: none;
     justify-content: center;
     align-items: center;
-    position: fixed;
+    position: absolute;
     transition: all 0.2s linear;
-    overflow: hidden;
-
+    font-size: 90%;
 }
+.player p{
+    font-size: inherit;
+}
+
 
 .playerNone {
     display: none;
@@ -340,8 +343,16 @@ input {
 }
 
 
-
-
+.newDivPlus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.newDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 

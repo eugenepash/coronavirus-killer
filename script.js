@@ -44,12 +44,11 @@ startButton.onclick = function () {
     //замена курсора
     $('html,body').css('cursor', 'crosshair');
 
-
     //генерация кружочков для сбора
     (makeDiv = function () {
         const divsize = ((Math.random() * 80) + 20).toFixed();
         const border = '#' + Math.round(0xffffff * Math.random()).toString(16);
-        let makeDivFadeIn = 1000;
+        let makeDivSpeed = ((Math.random() * 200) + 20).toFixed();
         const rounded = 70;
         $newdiv = $('<div class="newDiv">').css({
             'width': divsize + 'px',
@@ -66,17 +65,19 @@ startButton.onclick = function () {
             'left': posx + 'px',
             'top': '1200' + 'px',
             'display': 'none'
-        }).appendTo('.area').fadeIn( makeDivFadeIn, function () {
+        }).appendTo('.area').fadeIn( makeDivSpeed, function () {
             makeDiv();
+
 
             //движение кружков вверх
             $newdiv.animate({top: "1px"}, 15000);
+
+            $('.player').offset();
+
             //уничтожение при касании
             $($newdiv).mouseover(function () {
-
                 this.remove();
             //счет:
-
                 //инкремент
                 $.fn.extend({
                     increment: function () {
@@ -87,11 +88,64 @@ startButton.onclick = function () {
 
             //уменьшение радиуса и скорости
                 $('.player').css({
-                    'height' : '-=0.1' + 'px',
-                    'width'  : '-=0.1' + 'px',
+                    'height':'-=0.5' + 'px',
+                    'width':'-=0.5' + 'px',
                 });
              //ускорение генерации после сбора
-                makeDivFadeIn = makeDivFadeIn - 2;
+
+
+            });
+        });
+    })();
+    //генерация кружочков с плюсом
+    (makeDivPlus = function () {
+        const divsizePlus = 40;
+        let makeDivSpeed = 20000;
+        const rounded = 40;
+        $newdivPlus = $('<div class="newDiv">+</div>').css({
+            'width': divsizePlus + 'px',
+            'height': divsizePlus + 'px',
+            'border-radius': rounded + 'px',
+            'position': 'inherit',
+            'background-color' : '#0B6623',
+            'color' : 'white',
+            'display' : 'flex',
+            'font-size' : '100%',
+            'font-weight' : '800'
+        });
+        const posx = (Math.random() * ($(document).width() - divsizePlus)).toFixed();
+        // const posy = (Math.random() * ($(document).height() - divsizePlus)).toFixed();
+        $newdivPlus.css({
+            'position': 'absolute',
+            'left': posx + 'px',
+            'top': '1200' + 'px',
+            'display': 'none'
+        }).appendTo('.area').fadeIn( makeDivSpeed, function () {
+            makeDivPlus();
+
+
+            //движение кружков вверх
+            $newdivPlus.animate({top: "1px"}, 15000);
+
+            //уничтожение при касании
+            $($newdivPlus).mouseover(function () {
+                this.remove();
+                //счет:
+                //инкремент
+                $.fn.extend({
+                    increment: function () {
+                        return this.text( function (i, currentText) {
+                            return parseInt(currentText, 0) + 1;});}});
+                //вывод счета
+                $(".score").increment();
+
+                //уменьшение радиуса и скорости
+                $('.player').css({
+                    'height':'80px',
+                    'width':'80px',
+                });
+                //ускорение генерации после сбора
+
 
             });
         });
@@ -112,8 +166,12 @@ stopButton.onclick = function () {
     (makeDiv = function () {
         $newdiv.remove();
     });
+    (makeDivPlus = function () {
+        $newdivPlus.remove();
+    });
     //удаление сгенерированных кружков
     $('.newDiv').remove();
+    $('.newDivPlus').remove();
     // обнуление счета
     $(".score").html('0');
     //обнуление player
