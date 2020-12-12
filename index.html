@@ -6,9 +6,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <meta meta name="viewport" content="width=device-width, user-scalable=no" />
+
 </head>
 
 <body>
+
     <div class='popupSettings'>
         <div class="settings-content">
             <div class="settings-header">
@@ -16,27 +18,17 @@
                 <h2>Настройки:</h2>
             </div>
             <div class="settings-body">
-                <!--        управление -->
-                <div class='setControl'>
-                    <p style="font-weight: 600; padding-bottom: 10px;">Управление:</p>
-                    <div>
-                        <label>
-                            <input type="radio" class="mouseCheck" name="control" checked> Мышь
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="radio" class="keyboardCheck" name="control"> Клавиатура
-                        </label>
-                    </div>
-                </div>
                 <!--      форма-->
                 <div class='setForm'>
                     <p style="font-weight: 600; padding-bottom: 10px;">Форма:</p>
-
                     <div>
                         <label>
-                            <input type="radio" class="circleCheck" name="form" checked> Круг
+                            <input type="radio" class="antiBodyCheck" name="form" checked> Антитело
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" class="circleCheck" name="form" > Круг
                         </label>
                     </div>
                     <div>
@@ -69,40 +61,13 @@
                         <label>
                             <input type="radio" class="customColorCheck" name="color"> Свой цвет
                         </label>
-                        <div class='colorPicker'>
-                            <div>
-                                <p style="font-weight: 600;">Цвет игрока:</p>
-                                <label>
-                                    <input data-jscolor="{value:'rgba(45,144,207,0.41)'}" , onInput="update(this.jscolor)">
-                                </label>
-                                <p style="font-weight: 600; ">Цвет текста:</p>
-                                <label>
-                                    <input data-jscolor="{value:'rgba(255,255,255,1)'}" , onInput="updateText(this.jscolor)">
-                                </label>
-                                <p style="font-weight: 600; ">Цвет обводки:</p>
-                                <label>
-                                    <input data-jscolor="{value:'rgba(255,255,255,1)'}" , onInput="updateBorder(this.jscolor)">
-                                </label>
-                            </div>
-                        </div>
                     </div>
-                </div>
-
-                <!-- Свое изображение -->
-                <div class='setImage'>
-                    <input type='file' id="upload" class='uploadImgClass'onchange="showFile(this)"/>
-                    <div class="preview">
-                        <img src="" id="upload-img" class='uploadImg' />
-                    </div>
-                    <button class='buttonSetCustomImage' onchange="set(this)">
-                        <p style="font-weight: 600;">Установить</p>
-                    </button>
                 </div>
             </div>
         </div>
     </div>
     <div class="headerGame">
-        <h1>MiniGame</h1>
+        <h1>Coronavirus Killer</h1>
         <div class="headerGif"></div>
     </div>
 
@@ -124,40 +89,10 @@
             <button class='stopButton'>Стоп!</button>
         </div>
         <div id="circleBad">+</div>
-        <div class='player' id="move"><p>player</p></div>
+        <div class='player' id="move"></div>
         <div class='playerNone'></div>
     </div>
-    
-
 
     <script src="script.js"></script>
-    <script>
-        function readURL(e) {
-            if (this.files && this.files[0]) {
-                var reader = new FileReader();
-                $(reader).load(function(e) {
-                    $('#upload-img').attr('src', e.target.result);
-                });
-                reader.readAsDataURL(this.files[0]);
-            }
-        }
-        $("#upload").change(readURL);
 
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.0/jscolor.min.js"></script>
-   <script>
-        function update(picker) {
-            document.querySelector('.player').style.backgroundColor = picker.toRGBAString()
-        }
-
-        function updateText(picker) {
-            document.querySelector('.player').style.color = picker.toRGBAString()
-        }
-       function updateBorder(picker) {
-            document.querySelector('.player').style.borderColor = picker.toRGBAString()
-        }
-        jscolor.trigger('onInput');
-
-    </script>
 </body>

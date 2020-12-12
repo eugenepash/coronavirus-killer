@@ -16,47 +16,31 @@ let stopButton = document.querySelector('.stopButton'),
       colorPicker = document.querySelector(".colorPicker"),
       // check controls
       mouseCheck = document.querySelector('.mouseCheck'),
-      keyboardCheck = document.querySelector('.keyboardCheck');
-
-
-let outputCoordinate = document.querySelector('.outputCoordinate');
-let score = document.querySelector('.score');
-
-
-//Получение координат $newdiv
-
-
-
-
-
-
-
-
-
-
+     outputCoordinate = document.querySelector('.outputCoordinate'),
+     score = document.querySelector('.score');
 
 //СТАРТ
 startButton.onclick = function () {
     startButton.style.display = 'none';
     stopButton.style.display = 'flex';
     player.style.display = 'flex';
-    document.querySelector('.headerGame').style.display = 'none';
-    //замена курсора
+    //меняем курсор
     $('html,body').css('cursor', 'crosshair');
 
-    //генерация кружочков для сбора
+    document.querySelector('.headerGame').style.display = 'none';
+    //генерация кружков для сбора
     (makeDiv = function () {
+
         const divsize = ((Math.random() * 80) + 20).toFixed();
         const border = '#' + Math.round(0xffffff * Math.random()).toString(16);
         let makeDivSpeed = ((Math.random() * 200) + 20).toFixed();
         const rounded = 70;
+
         $newdiv = $('<div class="newDiv">').css({
             'width': divsize + 'px',
             'height': divsize + 'px',
             'border-radius': rounded + 'px',
-            'border': '2px solid' + border,
             'position': 'inherit',
-            'display': 'flex'
         });
         const posx = (Math.random() * ($(document).width() - divsize)).toFixed();
         // const posy = (Math.random() * ($(document).height() - divsize)).toFixed();
@@ -71,8 +55,6 @@ startButton.onclick = function () {
 
             //движение кружков вверх
             $newdiv.animate({top: "1px"}, 15000);
-
-            $('.player').offset();
 
             //уничтожение при касании
             $($newdiv).mouseover(function () {
@@ -92,8 +74,7 @@ startButton.onclick = function () {
                     'width':'-=0.5' + 'px',
                 });
              //ускорение генерации после сбора
-
-
+                //......
             });
         });
     })();
@@ -102,7 +83,7 @@ startButton.onclick = function () {
         const divsizePlus = 40;
         let makeDivSpeed = 20000;
         const rounded = 40;
-        $newdivPlus = $('<div class="newDiv">+</div>').css({
+        $newdivPlus = $('<div class="newDivPlus">+</div>').css({
             'width': divsizePlus + 'px',
             'height': divsizePlus + 'px',
             'border-radius': rounded + 'px',
@@ -151,8 +132,6 @@ startButton.onclick = function () {
         });
     })();
 }
-
-
 // СТОП
 stopButton.onclick = function () {
     stopButton.style.display = 'none';
@@ -181,7 +160,6 @@ stopButton.onclick = function () {
         'transition' : 'all 0.2s linear',
     });
 }
-
 // Настройки
 settingsButton.onclick = function () {
     popupSettings.style.display = 'block';
@@ -195,27 +173,6 @@ window.onclick = function (event) {
     }
 }
 
-//  color check
-
-redCheck.onclick = function () {
-    player.style.background = '#B43428';
-    player.style.color = 'white';
-    colorPicker.style.display = 'none';
-}
-blueCheck.onclick = function () {
-    player.style.background = '#2D78EB';
-    player.style.color = 'white';
-    colorPicker.style.display = 'none';
-}
-yellowCheck.onclick = function () {
-    player.style.background = '#fbc243';
-    player.style.color = 'black';
-    colorPicker.style.display = 'none';
-}
-customColorCheck.onclick = function () {
-    colorPicker.style.display = 'block';
-}
-
 
 // form check
 squareCheck.onclick = function () {
@@ -227,65 +184,10 @@ circleCheck.onclick = function () {
     player.className = 'player';
     player.style.borderRadius = '70px';
 }
-// custom Images
-const buttonSetCustomImage = document.querySelector('.buttonSetCustomImage');
-const customImage = document.querySelector('customImage');
-const preview = document.querySelector('.preview');
-const uploadImg = document.querySelector('.uploadImg');
 
-
-buttonSetCustomImage.onclick = function (){
-    
-}
-
-
-// keyboard
-keyboardCheck.onclick = function () {
-    document.body.removeEventListener("mousemove", getClickPosition, false);
-    document.addEventListener('keydown');
-}
-
-
-function update() {
-    document.removeEventListener('keydown');
-}
-
-let left1 = 0;
-let top1 = 0;
-
-window.onkeydown = function move_left() {
-    if (event.keyCode === 37) {
-        left1 = left1 - 30;
-        player.style.left = left1 + 'px';
-    } else if (event.keyCode === 39) {
-        left1 = left1 + 30;
-        player.style.left = left1 + 'px';
-    }
-    if(event.keyCode === 38) {
-        top1 = top1 - 30;
-        player.style.top = top1 + 'px';
-    } else if (event.keyCode ===40) {
-        top1 = top1 + 30;
-        player.style.top = top1 + 'px';
-    }
-    if(event.keyCode === 37 && event.keyCode === 38){
-        left1 = left1 - 30;
-        player.style.left = left1 + 'px';
-        top1 = top1 - 30;
-        player.style.top = top1 + 'px';
-    }
-};
-
-
-function keyPress() {
-
-}
 
 // Mouse
-mouseCheck.onclick = function () {
-    document.body.addEventListener("mousemove", getClickPosition, false);
-    document.removeEventListener('keydown', keyPress);
-}
+
 var mouseX = 0;
 var mouseY = 0;
 document.body.addEventListener("mousemove", getClickPosition, false);
@@ -307,6 +209,30 @@ function getPosition(w) {
         y: yPos
     };
 }
+
+let newDiv  = document.querySelector('.newDiv');
+
+area.onmousemove = function(event){
+    let x = event.x;
+    let y = event.y;
+    outputCoordinate.innerHTML = 'x: ' + x + " y: " + y;
+
+    player.style.transform = 'rotate('+57.2958*arcctg( x, y ) + 'deg)';
+
+    function arcctg(x, y) {
+        if (x > 0 && y > 0) return Math.PI / 2 - Math.atan(x / y);
+        if (x < 0 && y > 0) return Math.PI / 2 - Math.atan(x / y);
+        if (x < 0 && y < 0) return Math.PI / 2 + Math.atan(x / y);
+        if (x > 0 && y < 0) return 3 * Math.PI / 2 + Math.abs (Math.atan(x / y));
+    }
+}
+
+
+
+
+
+
+
 
 
 

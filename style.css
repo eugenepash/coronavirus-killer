@@ -23,7 +23,7 @@ h1{
     color: white;
 }
 .headerGif{
-    background-image: url(images/headerGif.gif);
+    background-image: url(images/corona.gif);
     background-size: cover;
     height: 200px;
     width: 200px;
@@ -88,26 +88,16 @@ button {
     margin-left: 5px;
 }
 .player {
-    top: 0;
-    margin: 2px;
-    padding: -10px;
-    border: 2px solid white;
-    border-radius: 70px;
     height: 70px;
     width: 70px;
-    background: #B43428;
-    color: white;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    transition: all 0.2s linear;
-    font-size: 90%;
-}
-.player p{
-    font-size: inherit;
-}
 
+    background-image: url("images/antibody.png");
+    background-size: cover;
+
+    display: none;
+    position: absolute;
+    transition: 0.2s linear;
+}
 
 .playerNone {
     display: none;
@@ -129,7 +119,7 @@ button {
      border-radius: 6px;
       transition: 0.2s linear;
 } 
-.startButton:hover { 
+.startButton:hover {
     background: #fbc243;
     color: black;
 }
@@ -262,72 +252,14 @@ input {
     height: 0;
 
 }
-.buttonSetCustomImage{
-    height: 40px;
-    width: 100px;
-    margin: 20px 20px 20px 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: floralwhite;
-    color: black;
-    font-weight: 600;
-    z-index: 1;
-    border: 2px solid black;
-    border-radius: 6px;
-    transition: 0.2s linear;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.buttonSetCustomImage:hover{
-    background: black;
-    color: white;
-}
-.setImage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 200px;
-    
-}
 
-.customImage {
-    cursor: pointer;
-}
 
 .setControl,
-.setColor,
-.setForm,
-.setImage {
+.setForm
+{
     margin: 10px;
 }
-.preview{
-    height: 200px;
-    width: 200px;
-    background-size: cover;
-    border: 2px solid black;
-    border-radius: 6px;
-}
-#upload{
-    width: 100px;
-}
-#upload-img{
-    height: 200px;
-    width: 200px;
-    background-size: cover;
-}
-.uploadImgClass{
-    margin-bottom: 10px;
-}
-.colorPicker{
-    display: none;
-}
-.customColor{
-    width: 250px;
-}
+
 #circleBad{
     display: none;
     justify-content: center;
@@ -352,6 +284,9 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url("images/corona.gif");
+    background-size: cover;
+
 }
 
 
