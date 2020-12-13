@@ -1,1 +1,1 @@
-Welcome to the coronavirus-killer for your browser!
+Welcome to the mini-game for your browser!
