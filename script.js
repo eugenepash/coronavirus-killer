@@ -18,9 +18,11 @@ let stopButton = document.querySelector('.stopButton'),
       noColor = document.querySelector(".noColor"),
       // check controls
       life = document.querySelector('.life'),
-      score = document.querySelector('.score');
+      score = document.querySelector('.score'),
+      newDiv = document.getElementsByClassName('.newDiv');
 
 
+// музыка
 
 //СТАРТ
 startButton.onclick = function () {
@@ -47,6 +49,7 @@ startButton.onclick = function () {
         });
         const posx = (Math.random() * ($(document).width() - divsize)).toFixed();
         // const posy = (Math.random() * ($(document).height() - divsize)).toFixed();
+
         $newdiv.css({
             'position': 'absolute',
             'left': posx + 'px',
@@ -55,14 +58,39 @@ startButton.onclick = function () {
         }).appendTo('.area').fadeIn( makeDivSpeed, function () {
             makeDiv();
 
+            // касание $newdiv к head
+            let getPosHead = $(head).offset().top;
+            let getPosDiv = $($newdiv).offset().top;
+            console.log("Head: " + getPosHead + ' Div: ' + getPosDiv);
+
+            if ($newdiv.offset().top === 80){
+                console.log('yes');
+            }
+
 
             //движение кружков вверх
             $newdiv.animate({top: "1px"}, 15000);
 
-            //уничтожение при касании
+
+
+            //console.log($newdiv.offset());
+            //console.log($(player).offset().left);
+
+            //let myPosPlayer = ($(player).offset().left + $(player).offset().top).toFixed();
+            //let myPosDiv = ($('.newDiv').offset().left + $('.newDiv').offset().top).toFixed();
+
+            //console.log("Player: " + myPosPlayer + ' Div: ' + myPosDiv);
+
+            // if (myPosPlayer === myPosDiv){
+            //    console.log('yes');
+            // }
+
+
+
+            //логика при касании курсора к $newdiv
             $($newdiv).mouseover(function () {
                 this.remove();
-            //счет:
+
                 //инкремент
                 $.fn.extend({
                     increment: function () {
@@ -73,14 +101,20 @@ startButton.onclick = function () {
 
             //уменьшение радиуса и скорости
                 $('.player').css({
-                    'height':'-=0.3' + 'px',
-                    'width':'-=0.3' + 'px',
+                    'height':'-=0.5' + 'px',
+                    'width':'-=0.5' + 'px',
                 });
              //ускорение генерации после сбора
                 //......
             });
+
+
+
+
         });
+
     })();
+
     //генерация кружочков с плюсом
     (makeDivPlus = function () {
         const divsizePlus = 40;
@@ -109,7 +143,7 @@ startButton.onclick = function () {
 
 
             //движение кружков вверх
-            $newdivPlus.animate({top: "1px"}, 15000);
+            $newdivPlus.animate({top: "1px"}, 11000);
 
             //уничтожение при касании
             $($newdivPlus).mouseover(function () {
@@ -256,9 +290,9 @@ function getPosition(w) {
     };
 }
 
-let newDiv  = document.querySelector('.newDiv');
 
-area.onmousemove = function(event){
+
+area.onmousemove = function(event) {
     let x = event.x;
     let y = event.y;
 
@@ -273,11 +307,11 @@ area.onmousemove = function(event){
 }
 
 
+// логика game over при уменьшнеии ГГ
 
+let head = document.querySelector('.head');
 
-
-
-
+//console.log(head.getBoundingClientRect());
 
 
 
