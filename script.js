@@ -8,16 +8,19 @@ let stopButton = document.querySelector('.stopButton'),
       // форма
       squareCheck = document.querySelector('.squareCheck'),
       circleCheck = document.querySelector('.circleCheck'),
+      antiBodyCheck = document.querySelector('.antiBodyCheck'),
       // Color
       redCheck = document.querySelector('.redCheck'),
       blueCheck = document.querySelector('.blueCheck'),
       yellowCheck = document.querySelector('.yellowCheck'),
       customColorCheck = document.querySelector('.customColorCheck'),
       colorPicker = document.querySelector(".colorPicker"),
+      noColor = document.querySelector(".noColor"),
       // check controls
-      mouseCheck = document.querySelector('.mouseCheck'),
-     outputCoordinate = document.querySelector('.outputCoordinate'),
-     score = document.querySelector('.score');
+      life = document.querySelector('.life'),
+      score = document.querySelector('.score');
+
+
 
 //СТАРТ
 startButton.onclick = function () {
@@ -70,8 +73,8 @@ startButton.onclick = function () {
 
             //уменьшение радиуса и скорости
                 $('.player').css({
-                    'height':'-=0.5' + 'px',
-                    'width':'-=0.5' + 'px',
+                    'height':'-=0.3' + 'px',
+                    'width':'-=0.3' + 'px',
                 });
              //ускорение генерации после сбора
                 //......
@@ -153,11 +156,11 @@ stopButton.onclick = function () {
     $('.newDivPlus').remove();
     // обнуление счета
     $(".score").html('0');
-    //обнуление player
+
+    //регенерация player
     $('.player').css({
         'height' : '70' + 'px',
         'width'  : '70' + 'px',
-        'transition' : 'all 0.2s linear',
     });
 }
 // Настройки
@@ -173,16 +176,60 @@ window.onclick = function (event) {
     }
 }
 
-
-// form check
-squareCheck.onclick = function () {
+//  color check
+noColor.onclick = function(){
     player.className = 'player';
-    player.style.borderRadius = '10px';
+    player.style.backgroundImage = 'url("images/antibody.png")';
+    player.style.backgroundSize = 'cover';
+    player.style.borderRadius = 'none';
+    player.style.border = 'none';
+    player.style.color = 'white';
+    player.style.backgroundColor = 'transparent';
+}
+redCheck.onclick = function () {
+    player.className = 'player';
+    player.style.background = '#B43428';
+    player.style.color = 'white';
+    colorPicker.style.display = 'none';
+}
+blueCheck.onclick = function () {
+    player.style.background = '#2D78EB';
+    player.style.color = 'white';
+    colorPicker.style.display = 'none';
+}
+yellowCheck.onclick = function () {
+    player.style.background = '#fbc243';
+    player.style.color = 'black';
+    colorPicker.style.display = 'none';
+}
+customColorCheck.onclick = function () {
+    colorPicker.style.display = 'block';
 }
 
+// form check
+antiBodyCheck.onclick = function (){
+    player.className = 'player';
+    player.style.backgroundImage = 'url("images/antibody.png")';
+    player.style.borderRadius = 'none';
+    player.style.border = 'none';
+    player.style.color = 'white';
+    player.style.backgroundColor = 'transparent';
+    player.style.backgroundSize = 'cover';
+}
+squareCheck.onclick = function () {
+    player.className = 'player';
+    player.style.borderRadius = '5px';
+    player.style.backgroundImage = 'none';
+    player.style.border = '2px solid white';
+    player.style.color = 'white';
+
+}
 circleCheck.onclick = function () {
     player.className = 'player';
     player.style.borderRadius = '70px';
+    player.style.backgroundImage = 'none';
+    player.style.border = '2px solid white';
+    player.style.color = 'white';
 }
 
 
@@ -194,11 +241,10 @@ document.body.addEventListener("mousemove", getClickPosition, false);
 
 function getClickPosition(e) {
     const parentPosition = getPosition(e.currentTarget);
-    var xPosition = e.pageX - parentPosition.x - (player.clientWidth / 1000);
-    var yPosition = e.pageY - parentPosition.y - (player.clientHeight / 1000);
+    var xPosition = e.pageX - parentPosition.x - (player.clientWidth / 5000);
+    var yPosition = e.pageY - parentPosition.y - (player.clientHeight / 5000);
     player.style.left = xPosition + "px";
     player.style.top = yPosition + "px";
-    outputCoordinate.innerHTML = e.pageX + ':' + e.pageY;
 
 }
 function getPosition(w) {
@@ -215,7 +261,6 @@ let newDiv  = document.querySelector('.newDiv');
 area.onmousemove = function(event){
     let x = event.x;
     let y = event.y;
-    outputCoordinate.innerHTML = 'x: ' + x + " y: " + y;
 
     player.style.transform = 'rotate('+57.2958*arcctg( x, y ) + 'deg)';
 

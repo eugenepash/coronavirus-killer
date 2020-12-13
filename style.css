@@ -59,18 +59,7 @@ button {
     justify-content: flex-end;
     align-items: center;
 }
-.outputCoordinate{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    color: white;
-    background: #121111;
-    font-size: 15px;
-    border: 2px solid white;
-    width: 150px;
-    height: 50px;
-}
+
 .scoreDiv{
     display: flex;
     justify-content: center;
@@ -90,13 +79,14 @@ button {
 .player {
     height: 70px;
     width: 70px;
-
     background-image: url("images/antibody.png");
     background-size: cover;
-
     display: none;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    transition: 0.2s linear;
+    color: white;
+
 }
 
 .playerNone {
@@ -254,7 +244,8 @@ input {
 }
 
 
-.setControl,
+
+.setColor,
 .setForm
 {
     margin: 10px;
@@ -288,13 +279,60 @@ input {
     background-size: cover;
 
 }
+.colorPicker{
+    display: none;
+}
 
 
 
 
 
+.life{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    color: white;
+    background: #121111;
+    font-size: 15px;
+    border: 2px solid white;
+    width: 150px;
+    height: 50px;
+}
+.life_one{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("images/heart.png");
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.life_two{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("images/heart.png");
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.life_three{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("images/heart.png");
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
 
-
+}
 
 
 

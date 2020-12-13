@@ -1,6 +1,6 @@
 <head>
     <meta charset="utf-8" />
-    <title>MiniGame</title>
+    <title>CovidKillerGame</title>
     <link href="style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
@@ -43,7 +43,12 @@
                     <p style="font-weight: 600; padding-bottom: 10px;">Цвет:</p>
                     <div>
                         <label>
-                            <input type="radio" class="redCheck" name="color" checked> Красный
+                            <input type="radio" class="noColor" name="color" checked> Удалить стили
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" class="redCheck" name="color" > Красный
                         </label>
                     </div>
                     <div>
@@ -61,6 +66,22 @@
                         <label>
                             <input type="radio" class="customColorCheck" name="color"> Свой цвет
                         </label>
+                        <div class='colorPicker'>
+                            <div>
+                                <p style="font-weight: 600;">Цвет игрока:</p>
+                                <label>
+                                    <input data-jscolor="{value:'rgba(45,144,207,0.41)'}" , onInput="update(this.jscolor)">
+                                </label>
+                                <p style="font-weight: 600; ">Цвет текста:</p>
+                                <label>
+                                    <input data-jscolor="{value:'rgba(255,255,255,1)'}" , onInput="updateText(this.jscolor)">
+                                </label>
+                                <p style="font-weight: 600; ">Цвет обводки:</p>
+                                <label>
+                                    <input data-jscolor="{value:'rgba(255,255,255,1)'}" , onInput="updateBorder(this.jscolor)">
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,16 +104,34 @@
                 <button class='settingsButton'>Настройки</button>
             </div>
             <div class="right">
-                <div class="outputCoordinate">Координата</div>
+                <div class="life">
+                    <div class="life_one"></div>
+                    <div class="life_two"></div>
+                    <div class="life_three"></div>
+                </div>
                 <div class="scoreDiv">Счет: <p class="score">0</p></div>
             </div>
             <button class='stopButton'>Стоп!</button>
         </div>
         <div id="circleBad">+</div>
-        <div class='player' id="move"></div>
+        <div class='player' id="move">player</div>
         <div class='playerNone'></div>
     </div>
 
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.0/jscolor.min.js"></script>
+    <script>
+        function update(picker) {
+            document.querySelector('.player').style.backgroundColor = picker.toRGBAString()
+        }
+        function updateText(picker) {
+            document.querySelector('.player').style.color = picker.toRGBAString()
+        }
+        function updateBorder(picker) {
+            document.querySelector('.player').style.borderColor = picker.toRGBAString()
+        }
+        jscolor.trigger('onInput');
+
+    </script>
 
 </body>
