@@ -41,7 +41,7 @@ startButton.onclick = function () {
         let makeDivSpeed = ((Math.random() * 200) + 20).toFixed();
         const rounded = 70;
 
-        $newdiv = $('<div class="newDiv">').css({
+        $newdiv = $('<div class="newDiv" id="newDivId">').css({
             'width': divsize + 'px',
             'height': divsize + 'px',
             'border-radius': rounded + 'px',
@@ -58,38 +58,27 @@ startButton.onclick = function () {
         }).appendTo('.area').fadeIn( makeDivSpeed, function () {
             makeDiv();
 
-            // касание $newdiv к head
-            let getPosHead = $(head).offset().top;
-            let getPosDiv = $($newdiv).offset().top;
-            console.log("Head: " + getPosHead + ' Div: ' + getPosDiv);
 
-            if ($newdiv.offset().top === 80){
-                console.log('yes');
-            }
 
+            const randomLeft = ((Math.random() * 1800) + 20).toFixed();
+            const randomRight = ((Math.random() * 1800) + 20).toFixed();
 
             //движение кружков вверх
-            $newdiv.animate({top: "1px"}, 15000);
-
-
-
-            //console.log($newdiv.offset());
-            //console.log($(player).offset().left);
-
-            //let myPosPlayer = ($(player).offset().left + $(player).offset().top).toFixed();
-            //let myPosDiv = ($('.newDiv').offset().left + $('.newDiv').offset().top).toFixed();
-
-            //console.log("Player: " + myPosPlayer + ' Div: ' + myPosDiv);
-
-            // if (myPosPlayer === myPosDiv){
-            //    console.log('yes');
-            // }
-
+            let speedCorona = 15000; // speed COVID-19
+            $newdiv.animate({left: randomLeft, right: randomRight, top: '40px'}, speedCorona, function () {
+                this.remove();
+                console.log('game OVER');
+            });
 
 
             //логика при касании курсора к $newdiv
             $($newdiv).mouseover(function () {
                 this.remove();
+
+                //ускорение covid-19 после сбора
+                $newdiv.speedCorona = speedCorona - 10000;
+
+
 
                 //инкремент
                 $.fn.extend({
@@ -104,13 +93,8 @@ startButton.onclick = function () {
                     'height':'-=0.5' + 'px',
                     'width':'-=0.5' + 'px',
                 });
-             //ускорение генерации после сбора
-                //......
+
             });
-
-
-
-
         });
 
     })();
@@ -118,7 +102,7 @@ startButton.onclick = function () {
     //генерация кружочков с плюсом
     (makeDivPlus = function () {
         const divsizePlus = 40;
-        let makeDivSpeed = 20000;
+        let makeDivSpeed = 14000;
         const rounded = 40;
         $newdivPlus = $('<div class="newDivPlus">+</div>').css({
             'width': divsizePlus + 'px',
@@ -143,7 +127,7 @@ startButton.onclick = function () {
 
 
             //движение кружков вверх
-            $newdivPlus.animate({top: "1px"}, 11000);
+            $newdivPlus.animate({top: "80px"}, 15000);
 
             //уничтожение при касании
             $($newdivPlus).mouseover(function () {
